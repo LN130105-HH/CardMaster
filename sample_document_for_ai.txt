@@ -1,0 +1,18 @@
+TÀI LIỆU ÔN TẬP LẬP TRÌNH DI ĐỘNG ANDROID & KIẾN TRÚC ỨNG DỤNG
+
+1. Khái niệm về Jetpack và Room Persistence Library
+Android Jetpack là tập hợp các thư viện, công cụ và hướng dẫn cấu trúc mã nguồn giúp lập trình viên xây dựng các ứng dụng Android hiện đại, ổn định và dễ bảo trì. Trong nhóm kiến trúc (Architecture Components), Room Persistence Library đóng vai trò là một lớp trừu tượng bao bọc trên SQLite database, cung cấp khả năng kiểm tra truy vấn SQL ngay tại thời điểm biên dịch (compile-time verification), đồng thời hỗ trợ luồng dữ liệu phản ứng như LiveData và Flow.
+
+2. Mô hình MVVM (Model - View - ViewModel)
+Mô hình MVVM phân tách rõ ràng trách nhiệm giữa ba tầng: View chịu trách nhiệm hiển thị giao diện và nhận tương tác từ người dùng (Activity, Fragment); ViewModel lưu trữ và quản lý dữ liệu liên quan đến UI, sống sót qua các thay đổi cấu hình như xoay màn hình (configuration changes); Model đại diện cho nguồn dữ liệu kinh doanh và lưu trữ (Repository, Room Database, Remote Network API).
+
+3. Quản lý tác vụ nền và luồng xử lý
+Trên Android, Main Thread (UI Thread) chuyên trách vẽ giao diện và xử lý sự kiện cảm ứng. Mọi thao tác tốn thời gian như đọc ghi cơ sở dữ liệu, đọc file dung lượng lớn hoặc gọi mạng HTTP đều bắt buộc phải thực thi trên các Background Worker Threads để tránh hiện tượng giao diện bị đơ hoặc lỗi ANR (Application Not Responding).
+
+4. Trắc nghiệm kiểm tra nhanh:
+Câu 1: ViewModel có bị hủy khi người dùng xoay màn hình điện thoại không?
+A. Không, ViewModel vẫn được giữ lại trong bộ nhớ
+B. Có, ViewModel bị hủy và tạo mới lại cùng Activity
+C. Tùy thuộc vào dung lượng RAM của thiết bị
+D. Chỉ bị hủy khi dùng Fragment
+Đáp án đúng: A. ViewModel được thiết kế để sống sót qua configuration change.

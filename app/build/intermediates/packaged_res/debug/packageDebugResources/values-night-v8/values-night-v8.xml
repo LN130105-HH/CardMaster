@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="color_accent">#FBBF24</color>
+    <color name="color_accent_container">#78350F</color>
+    <color name="color_background">#0B1120</color>
+    <color name="color_divider">#1E293B</color>
+    <color name="color_error">#F87171</color>
+    <color name="color_error_container">#7F1D1D</color>
+    <color name="color_flashcard">#818CF8</color>
+    <color name="color_flashcard_container">#312E81</color>
+    <color name="color_info">#38BDF8</color>
+    <color name="color_info_container">#082F49</color>
+    <color name="color_on_error_container">#FEE2E2</color>
+    <color name="color_on_primary">#FFFFFF</color>
+    <color name="color_on_primary_container">#E0E7FF</color>
+    <color name="color_on_secondary">#FFFFFF</color>
+    <color name="color_on_secondary_container">#E0F2FE</color>
+    <color name="color_on_success_container">#DCFCE7</color>
+    <color name="color_on_warning_container">#FEF3C7</color>
+    <color name="color_outline">#334155</color>
+    <color name="color_primary">#818CF8</color>
+    <color name="color_primary_container">#312E81</color>
+    <color name="color_quiz">#38BDF8</color>
+    <color name="color_quiz_container">#082F49</color>
+    <color name="color_secondary">#38BDF8</color>
+    <color name="color_secondary_container">#082F49</color>
+    <color name="color_success">#4ADE80</color>
+    <color name="color_success_container">#064E3B</color>
+    <color name="color_surface">#111827</color>
+    <color name="color_surface_variant">#1F2937</color>
+    <color name="color_text_disabled">#64748B</color>
+    <color name="color_text_primary">#F8FAFC</color>
+    <color name="color_text_secondary">#CBD5E1</color>
+    <color name="color_warning">#FBBF24</color>
+    <color name="color_warning_container">#78350F</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <style name="Theme.CardMaster" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorOnPrimary">@color/color_on_primary</item>
+        <item name="colorPrimaryContainer">@color/color_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/color_on_primary_container</item>
+
+        <item name="colorSecondary">@color/color_secondary</item>
+        <item name="colorOnSecondary">@color/color_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/color_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/color_on_secondary_container</item>
+
+        <item name="android:colorBackground">@color/color_background</item>
+        <item name="colorSurface">@color/color_surface</item>
+        <item name="colorOutline">@color/color_outline</item>
+
+        <item name="android:statusBarColor">@color/color_surface</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

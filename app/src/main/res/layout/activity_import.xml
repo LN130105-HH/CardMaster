@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_background"
+    android:orientation="vertical"
+    android:padding="@dimen/screen_padding">
+
+    <!-- Top Bar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@color/color_text_primary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/space_8"
+            android:layout_toEndOf="@+id/btnBack"
+            android:text="Nhập thẻ từ File"
+            android:textColor="@color/color_text_primary"
+            android:textSize="@dimen/text_title_large"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <!-- Target Deck Selector -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_16"
+        android:text="Chọn bộ thẻ đích:"
+        android:textColor="@color/color_text_secondary"
+        android:textSize="@dimen/text_label_medium"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/spTargetDeck"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/bg_quiz_option_default" />
+
+    <!-- Choose File Button & Selected File Info -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_16"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSelectFile"
+            style="@style/Widget.CardMaster.Button.Secondary"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height"
+            android:text="Chọn File"
+            app:icon="@drawable/ic_upload_file"
+            app:iconGravity="textStart"
+            app:iconSize="18dp" />
+
+        <TextView
+            android:id="@+id/tvSelectedFileName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/space_12"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Chưa chọn file (hỗ trợ .csv, .xlsx)"
+            android:textColor="@color/color_text_secondary"
+            android:textSize="@dimen/text_body_medium" />
+    </LinearLayout>
+
+    <!-- Preview Summary Stats -->
+    <LinearLayout
+        android:id="@+id/llPreviewStats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_16"
+        android:background="@drawable/bg_badge_info"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tvPreviewStats"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Hợp lệ: 10 dòng • Lỗi: 0 dòng"
+            android:textColor="@color/color_primary"
+            android:textSize="@dimen/text_body_medium"
+            android:textStyle="bold" />
+
+        <CheckBox
+            android:id="@+id/cbSelectAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Chọn tất cả"
+            android:textColor="@color/color_text_primary"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- Preview RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPreview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/space_8"
+        android:layout_weight="1" />
+
+    <!-- Confirm Save Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnConfirmImport"
+        style="@style/Widget.CardMaster.Button.Primary"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="@dimen/space_12"
+        android:enabled="false"
+        android:text="Xác nhận lưu vào bộ thẻ" />
+</LinearLayout>

@@ -1,0 +1,80 @@
+<resources>
+    <!-- Base Application Theme -->
+    <style name="Theme.CardMaster" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorOnPrimary">@color/color_on_primary</item>
+        <item name="colorPrimaryContainer">@color/color_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/color_on_primary_container</item>
+
+        <item name="colorSecondary">@color/color_secondary</item>
+        <item name="colorOnSecondary">@color/color_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/color_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/color_on_secondary_container</item>
+
+        <item name="android:colorBackground">@color/color_background</item>
+        <item name="colorSurface">@color/color_surface</item>
+        <item name="colorOutline">@color/color_outline</item>
+
+        <item name="android:statusBarColor">@color/color_surface</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <!-- Button Styles -->
+    <style name="Widget.CardMaster.Button.Primary" parent="Widget.Material3.Button">
+        <item name="android:backgroundTint">@color/color_primary</item>
+        <item name="android:textColor">@color/color_on_primary</item>
+        <item name="cornerRadius">@dimen/corner_radius_button</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:textSize">@dimen/text_title_medium</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Widget.CardMaster.Button.Secondary" parent="Widget.Material3.Button.TonalButton">
+        <item name="android:backgroundTint">@color/color_secondary_container</item>
+        <item name="android:textColor">@color/color_on_secondary_container</item>
+        <item name="cornerRadius">@dimen/corner_radius_button</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:textSize">@dimen/text_title_medium</item>
+    </style>
+
+    <style name="Widget.CardMaster.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/color_outline</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="android:textColor">@color/color_text_primary</item>
+        <item name="cornerRadius">@dimen/corner_radius_button</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:textSize">@dimen/text_title_medium</item>
+    </style>
+
+    <style name="Widget.CardMaster.Button.Danger" parent="Widget.Material3.Button">
+        <item name="android:backgroundTint">@color/color_error</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">@dimen/corner_radius_button</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:textSize">@dimen/text_title_medium</item>
+    </style>
+
+    <!-- Card Styles -->
+    <style name="Widget.CardMaster.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/color_surface</item>
+        <item name="cardCornerRadius">@dimen/corner_radius_card</item>
+        <item name="cardElevation">1dp</item>
+    </style>
+
+    <!-- Flashcard View Style -->
+    <style name="Widget.CardMaster.Flashcard" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/color_surface</item>
+        <item name="cardCornerRadius">@dimen/corner_radius_flashcard</item>
+        <item name="cardElevation">2dp</item>
+    </style>
+
+    <!-- Input Layout Style -->
+    <style name="Widget.CardMaster.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/color_primary</item>
+        <item name="boxCornerRadiusTopStart">@dimen/corner_radius_input</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/corner_radius_input</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/corner_radius_input</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/corner_radius_input</item>
+        <item name="hintTextColor">@color/color_text_secondary</item>
+    </style>
+</resources>

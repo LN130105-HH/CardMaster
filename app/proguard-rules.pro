@@ -1,0 +1,1 @@
+# CardMaster ProGuard rules

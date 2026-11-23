@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cardmaster.app.QuizScoringTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-11-23T07:23:29" hostname="LAPTOP-7KA2VO4J" time="0.001">
+  <properties/>
+  <testcase name="testBestScoreCalculation" classname="com.cardmaster.app.QuizScoringTest" time="0.001"/>
+  <testcase name="testAllQuestionsSkipped" classname="com.cardmaster.app.QuizScoringTest" time="0.0"/>
+  <testcase name="testSpecificationQuizScoreExample" classname="com.cardmaster.app.QuizScoringTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

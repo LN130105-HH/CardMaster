@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name">CardMaster</string>
+
+    <!-- Navigation Tabs -->
+    <string name="nav_home">Home</string>
+    <string name="nav_statistics">Thống kê</string>
+    <string name="nav_chat_ai">Chat AI</string>
+    <string name="nav_storage">Storage</string>
+    <string name="nav_profile">Profile</string>
+
+    <!-- Auth -->
+    <string name="login_title">Đăng nhập</string>
+    <string name="login_subtitle">Chào mừng bạn quay lại CardMaster</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Mật khẩu</string>
+    <string name="confirm_password_hint">Xác nhận mật khẩu</string>
+    <string name="full_name_hint">Họ và tên</string>
+    <string name="forgot_password">Quên mật khẩu?</string>
+    <string name="btn_login">Đăng nhập</string>
+    <string name="btn_register">Đăng ký</string>
+    <string name="btn_reset_password">Gửi liên kết đặt lại mật khẩu</string>
+    <string name="no_account">Chưa có tài khoản? Đăng ký ngay</string>
+    <string name="have_account">Đã có tài khoản? Đăng nhập</string>
+    <string name="logout">Đăng xuất</string>
+
+    <!-- Home -->
+    <string name="greeting">Xin chào,</string>
+    <string name="total_cards">Tổng số thẻ</string>
+    <string name="memorized_cards">Đã nhớ</string>
+    <string name="need_review_cards">Cần ôn lại</string>
+    <string name="continue_study">Học tiếp</string>
+    <string name="recent_activity">Hoạt động gần đây</string>
+    <string name="upcoming_plans">Lịch ôn sắp tới</string>
+
+    <!-- Storage -->
+    <string name="subjects">Môn học / Chủ đề</string>
+    <string name="all_subjects">Tất cả</string>
+    <string name="decks">Bộ thẻ</string>
+    <string name="search_hint">Tìm kiếm môn học, bộ thẻ...</string>
+    <string name="import_file">Nhập file CSV/Excel</string>
+    <string name="export_file">Xuất file</string>
+    <string name="ai_create">Tạo bằng Gemini AI</string>
+    <string name="btn_add_subject">Thêm môn</string>
+    <string name="btn_add_deck">Tạo bộ thẻ</string>
+
+    <!-- Flashcard & Quiz -->
+    <string name="card_type_flashcard">Flashcard</string>
+    <string name="card_type_quiz">Quiz Card</string>
+    <string name="btn_flip_card">Lật thẻ</string>
+    <string name="btn_memorized">Đã nhớ</string>
+    <string name="btn_not_memorized">Chưa nhớ</string>
+    <string name="btn_skip_question">Bỏ qua câu này</string>
+    <string name="btn_next_question">Câu tiếp theo</string>
+    <string name="btn_flip_explanation">Lật thẻ để xem giải thích</string>
+
+    <!-- Statistics -->
+    <string name="filter_today">Hôm nay</string>
+    <string name="filter_7_days">7 ngày</string>
+    <string name="filter_30_days">30 ngày</string>
+    <string name="filter_all">Tất cả</string>
+    <string name="study_time_title">THỜI GIAN HỌC TẬP</string>
+    <string name="quiz_stat_title">BÀI TẬP ĐÃ LÀM</string>
+
+    <!-- Notifications -->
+    <string name="notifications_title">Thông báo</string>
+    <string name="clear_all_notifications">Xóa tất cả</string>
+
+    <!-- Study Planner & Google Calendar -->
+    <string name="study_planner_title">Lịch ôn tập</string>
+    <string name="sync_google_calendar">Đồng bộ Google Calendar</string>
+</resources>

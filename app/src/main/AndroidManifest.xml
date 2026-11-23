@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+
+    <application
+        android:name=".CardMasterApp"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_style"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_style"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.CardMaster">
+
+        <!-- Splash Activity (Launcher) -->
+        <activity
+            android:name=".ui.splash.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.CardMaster">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Auth Activities -->
+        <activity
+            android:name=".ui.auth.LoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".ui.auth.RegisterActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".ui.auth.ForgotPasswordActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Main Tabbed Activity -->
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Deck & Card Activities -->
+        <activity
+            android:name=".ui.deck.DeckDetailActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.card.CardEditorActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Study Activities -->
+        <activity
+            android:name=".ui.study.FlashcardStudyActivity"
+            android:exported="false" />
+
+        <!-- Quiz Activities -->
+        <activity
+            android:name=".ui.quiz.QuizSetupActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.quiz.QuizPlayActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.quiz.QuizResultActivity"
+            android:exported="false" />
+
+        <!-- Import / Export Activities -->
+        <activity
+            android:name=".ui.impexp.ImportActivity"
+            android:exported="false" />
+
+        <!-- AI Document Activities -->
+        <activity
+            android:name=".ui.ai.AiDocumentActivity"
+            android:exported="false" />
+
+        <!-- Study Planner Activities -->
+        <activity
+            android:name=".ui.planner.StudyPlannerActivity"
+            android:exported="false" />
+
+        <!-- Notification Activities -->
+        <activity
+            android:name=".ui.notification.NotificationActivity"
+            android:exported="false" />
+
+        <!-- Profile Sub-Activities -->
+        <activity
+            android:name=".ui.main.profile.EditProfileActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.main.profile.ChangePasswordActivity"
+            android:exported="false" />
+
+    </application>
+</manifest>
