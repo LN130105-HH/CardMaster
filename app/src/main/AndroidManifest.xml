@@ -4,6 +4,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
     <application
         android:name=".CardMasterApp"
         android:allowBackup="true"
@@ -101,6 +104,10 @@
 
         <activity
             android:name=".ui.main.profile.ChangePasswordActivity"
+            android:exported="false" />
+        <receiver
+            android:name=".util.StudyReminderReceiver"
+            android:enabled="true"
             android:exported="false" />
 
     </application>

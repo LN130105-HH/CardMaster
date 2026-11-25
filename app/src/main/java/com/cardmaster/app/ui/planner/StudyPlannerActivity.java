@@ -1,12 +1,19 @@
 package com.cardmaster.app.ui.planner;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.cardmaster.app.data.local.AppDatabase;
@@ -15,10 +22,15 @@ import com.cardmaster.app.data.local.entity.StudyPlanEntity;
 import com.cardmaster.app.data.repository.AppRepository;
 import com.cardmaster.app.databinding.ActivityStudyPlannerBinding;
 import com.cardmaster.app.ui.planner.adapter.StudyPlanAdapter;
+import com.cardmaster.app.util.GoogleCalendarHelper;
 import com.cardmaster.app.util.SessionManager;
+import com.cardmaster.app.util.StudyReminderReceiver;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 
-import java.util.List;
-import java.util.UUID;
 import java.util.concurrent.Executors;
 
 public class StudyPlannerActivity extends AppCompatActivity {
@@ -30,6 +42,45 @@ public class StudyPlannerActivity extends AppCompatActivity {
     private StudyPlanAdapter adapter;
 
     private long defaultDeckId = -1;
+    private boolean isSyncing = false;
+
+    private final ActivityResultLauncher<String> notificationPermissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+                if (!isGranted) {
+                    Toast.makeText(this, "Bạn đã từ chối quyền thông báo. Ứng dụng sẽ không thể nhắc giờ học.", Toast.LENGTH_LONG).show();
+                }
+            });
+
+    private final ActivityResultLauncher<Intent> googleSignInLauncher =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+                if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+                    Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(result.getData());
+                    try {
+                        GoogleSignInAccount account = task.getResult(ApiException.class);
+                        if (account != null) {
+                            executeCalendarSyncWithAccount(account);
+                        } else {
+                            Toast.makeText(this, "Chưa kết nối được tài khoản Google.", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (ApiException e) {
+                        Toast.makeText(this, "Đăng nhập Google thất bại (Mã lỗi: " + e.getStatusCode() + ")", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(this, "Chưa kết nối tài khoản Google để đồng bộ lịch.", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+    private final ActivityResultLauncher<Intent> calendarConsentLauncher =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    GoogleSignInAccount account = GoogleCalendarHelper.getConnectedAccount(this);
+                    if (account != null) {
+                        executeCalendarSyncWithAccount(account);
+                    }
+                } else {
+                    Toast.makeText(this, "Bạn chưa cấp quyền truy cập Google Calendar.", Toast.LENGTH_SHORT).show();
+                }
+            });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +94,21 @@ public class StudyPlannerActivity extends AppCompatActivity {
 
         defaultDeckId = getIntent().getLongExtra("TARGET_DECK_ID", -1);
 
+        StudyReminderReceiver.createNotificationChannel(this);
+        requestNotificationPermissionIfNeeded();
+
         setupRecyclerView();
         observePlans();
         setupListeners();
+    }
+
+    private void requestNotificationPermissionIfNeeded() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                    != PackageManager.PERMISSION_GRANTED) {
+                notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+            }
+        }
     }
 
     private void setupRecyclerView() {
@@ -86,7 +149,7 @@ public class StudyPlannerActivity extends AppCompatActivity {
                         StudyPlanEditorDialog.show(this, repository, sessionManager.getUserId(), plan, plan.getDeckId(), null);
                     } else if (which == 1) {
                         repository.deletePlan(plan, () -> {
-                            runOnUiThread(() -> Toast.makeText(this, "Đã xóa lịch ôn tập", Toast.LENGTH_SHORT).show());
+                            runOnUiThread(() -> Toast.makeText(this, "Đã xóa lịch ôn tập và hủy nhắc nhở", Toast.LENGTH_SHORT).show());
                         });
                     }
                 })
@@ -94,33 +157,70 @@ public class StudyPlannerActivity extends AppCompatActivity {
     }
 
     private void performGoogleCalendarSync() {
-        Toast.makeText(this, "Đang kết nối và đồng bộ với Google Calendar...", Toast.LENGTH_SHORT).show();
+        if (isSyncing) {
+            Toast.makeText(this, "Đang đồng bộ, vui lòng đợi...", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
+        GoogleSignInAccount connectedAccount = GoogleCalendarHelper.getConnectedAccount(this);
+        if (connectedAccount == null) {
+            // Trạng thái chưa kết nối tài khoản -> mở hộp thoại đăng nhập & cấp quyền Google Calendar
+            Toast.makeText(this, "Vui lòng chọn tài khoản Google để kết nối Calendar...", Toast.LENGTH_SHORT).show();
+            GoogleSignInClient signInClient = GoogleCalendarHelper.getSignInClient(this);
+            googleSignInLauncher.launch(signInClient.getSignInIntent());
+            return;
+        }
+
+        executeCalendarSyncWithAccount(connectedAccount);
+    }
+
+    private void executeCalendarSyncWithAccount(GoogleSignInAccount account) {
+        isSyncing = true;
+        binding.btnSyncNow.setEnabled(false);
+        Toast.makeText(this, "Đang đồng bộ lịch học với " + account.getEmail() + "...", Toast.LENGTH_SHORT).show();
+
+        long userId = sessionManager.getUserId();
         Executors.newSingleThreadExecutor().execute(() -> {
-            long userId = sessionManager.getUserId();
-            List<StudyPlanEntity> pending = db.studyPlanDao().getPendingSyncPlans(userId);
+            GoogleCalendarHelper.SyncResult result = GoogleCalendarHelper.syncUserPlans(this, account, userId);
 
-            for (StudyPlanEntity plan : pending) {
-                if (plan.getCalendarEventId() == null || plan.getCalendarEventId().isEmpty()) {
-                    plan.setCalendarEventId("gcal_" + UUID.randomUUID().toString().substring(0, 8));
-                }
-                plan.setSyncStatus(StudyPlanEntity.SYNC_SYNCED);
-                plan.setLastSyncedAt(System.currentTimeMillis());
-                db.studyPlanDao().update(plan);
+            if (result.status == GoogleCalendarHelper.SyncResult.Status.SUCCESS && (result.syncedCount > 0 || result.deletedCount > 0)) {
+                db.notificationDao().insert(new NotificationEntity(
+                        userId,
+                        "Đồng bộ Google Calendar thành công",
+                        "Đã cập nhật " + result.syncedCount + " lịch học và xóa " + result.deletedCount + " lịch trên tài khoản " + result.accountEmail,
+                        NotificationEntity.TYPE_REMINDER,
+                        false,
+                        System.currentTimeMillis()
+                ));
             }
 
-            // Also post a notification about sync completion
-            db.notificationDao().insert(new NotificationEntity(
-                    userId,
-                    "Đồng bộ Google Calendar thành công",
-                    "Đã đồng bộ " + (pending != null ? pending.size() : 0) + " sự kiện ôn tập với Google Calendar.",
-                    NotificationEntity.TYPE_REMINDER,
-                    false,
-                    System.currentTimeMillis()
-            ));
-
             runOnUiThread(() -> {
-                Toast.makeText(this, "Đã hoàn tất đồng bộ hai chiều với Google Calendar!", Toast.LENGTH_LONG).show();
+                isSyncing = false;
+                binding.btnSyncNow.setEnabled(true);
+
+                switch (result.status) {
+                    case SUCCESS:
+                        if (result.syncedCount == 0 && result.deletedCount == 0) {
+                            Toast.makeText(this, "Tất cả lịch học đã đồng bộ sẵn với Google Calendar (" + result.accountEmail + ").", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(this, "Đồng bộ thành công " + result.syncedCount + " lịch học lên Google Calendar!", Toast.LENGTH_LONG).show();
+                        }
+                        break;
+
+                    case NEED_CONSENT:
+                        if (result.consentIntent != null) {
+                            calendarConsentLauncher.launch(result.consentIntent);
+                        }
+                        break;
+
+                    case NOT_SIGNED_IN:
+                        Toast.makeText(this, "Chưa kết nối tài khoản Google.", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case ERROR:
+                        Toast.makeText(this, result.errorMessage != null ? result.errorMessage : "Đồng bộ thất bại.", Toast.LENGTH_LONG).show();
+                        break;
+                }
             });
         });
     }

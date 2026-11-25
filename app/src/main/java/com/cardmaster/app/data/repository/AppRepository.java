@@ -4,6 +4,8 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
+import com.cardmaster.app.util.StudyReminderScheduler;
+
 import com.cardmaster.app.data.local.AppDatabase;
 import com.cardmaster.app.data.local.dao.*;
 import com.cardmaster.app.data.local.entity.*;
@@ -13,6 +15,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class AppRepository {
+    private final Application application;
     private final UserDao userDao;
     private final SubjectDao subjectDao;
     private final DeckDao deckDao;
@@ -26,6 +29,7 @@ public class AppRepository {
     private final ExecutorService executor = Executors.newFixedThreadPool(4);
 
     public AppRepository(Application application) {
+        this.application = application;
         AppDatabase db = AppDatabase.getInstance(application);
         userDao = db.userDao();
         subjectDao = db.subjectDao();
@@ -234,7 +238,9 @@ public class AppRepository {
 
     public void insertPlan(StudyPlanEntity plan, Runnable onDone) {
         executor.execute(() -> {
-            studyPlanDao.insert(plan);
+            long newId = studyPlanDao.insert(plan);
+            plan.setId(newId);
+            StudyReminderScheduler.scheduleOrUpdate(application, plan);
             if (onDone != null) onDone.run();
         });
     }
@@ -242,13 +248,23 @@ public class AppRepository {
     public void updatePlan(StudyPlanEntity plan, Runnable onDone) {
         executor.execute(() -> {
             studyPlanDao.update(plan);
+            StudyReminderScheduler.scheduleOrUpdate(application, plan);
             if (onDone != null) onDone.run();
         });
     }
 
     public void deletePlan(StudyPlanEntity plan, Runnable onDone) {
         executor.execute(() -> {
-            studyPlanDao.delete(plan);
+            // Hủy thông báo nhắc nhở trên thiết bị ngay lập tức
+            StudyReminderScheduler.cancel(application, plan.getId());
+
+            if (plan.getCalendarEventId() != null && !plan.getCalendarEventId().trim().isEmpty()) {
+                // Đánh dấu DELETED để lần đồng bộ Google Calendar tiếp theo xóa sự kiện trên cloud
+                plan.setSyncStatus(StudyPlanEntity.SYNC_DELETED);
+                studyPlanDao.update(plan);
+            } else {
+                studyPlanDao.delete(plan);
+            }
             if (onDone != null) onDone.run();
         });
     }

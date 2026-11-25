@@ -36,4 +36,7 @@ public interface StudyPlanDao {
 
     @Query("SELECT * FROM study_plans WHERE id = :id LIMIT 1")
     StudyPlanEntity getById(long id);
+
+    @Query("SELECT * FROM study_plans WHERE userId = :userId AND syncStatus = 'DELETED'")
+    List<StudyPlanEntity> getDeletedSyncPlans(long userId);
 }

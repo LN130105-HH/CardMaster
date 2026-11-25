@@ -1,8 +1,12 @@
 package com.cardmaster.app.ui.planner;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
@@ -11,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.cardmaster.app.R;
 import com.cardmaster.app.data.local.AppDatabase;
@@ -49,7 +55,6 @@ public class StudyPlanEditorDialog {
         ArrayAdapter<String> deckAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, deckTitles);
         spDeck.setAdapter(deckAdapter);
 
-        // Repeat modes
         String[] repeats = new String[]{"Một lần duy nhất", "Lặp lại hàng ngày", "Lặp lại hàng tuần"};
         ArrayAdapter<String> repeatAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, repeats);
         spRepeat.setAdapter(repeatAdapter);
@@ -62,8 +67,22 @@ public class StudyPlanEditorDialog {
             else if (StudyPlanEntity.REPEAT_WEEKLY.equals(editPlan.getRepeatMode())) spRepeat.setSelection(2);
         } else {
             calendar.add(Calendar.HOUR_OF_DAY, 2);
+            cbRemind.setChecked(true);
         }
         tvDateTime.setText(DateUtils.formatDateTime(calendar.getTimeInMillis()));
+
+        cbRemind.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked && Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                if (ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS)
+                        != PackageManager.PERMISSION_GRANTED && context instanceof Activity) {
+                    ActivityCompat.requestPermissions(
+                            (Activity) context,
+                            new String[]{Manifest.permission.POST_NOTIFICATIONS},
+                            1001
+                    );
+                }
+            }
+        });
 
         tvDateTime.setOnClickListener(v -> {
             new DatePickerDialog(context, (dView, year, month, dayOfMonth) -> {
@@ -74,6 +93,8 @@ public class StudyPlanEditorDialog {
                 new TimePickerDialog(context, (tView, hourOfDay, minute) -> {
                     calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
                     calendar.set(Calendar.MINUTE, minute);
+                    calendar.set(Calendar.SECOND, 0);
+                    calendar.set(Calendar.MILLISECOND, 0);
                     tvDateTime.setText(DateUtils.formatDateTime(calendar.getTimeInMillis()));
                 }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true).show();
 
@@ -124,7 +145,7 @@ public class StudyPlanEditorDialog {
                 editPlan.setScheduledTime(scheduledTime);
                 editPlan.setRepeatMode(repeatMode);
                 editPlan.setRemind(remind);
-                editPlan.setSyncStatus(StudyPlanEntity.SYNC_PENDING); // Mark for calendar sync
+                editPlan.setSyncStatus(StudyPlanEntity.SYNC_PENDING);
                 repository.updatePlan(editPlan, () -> {
                     if (listener != null) listener.onSaved();
                 });
