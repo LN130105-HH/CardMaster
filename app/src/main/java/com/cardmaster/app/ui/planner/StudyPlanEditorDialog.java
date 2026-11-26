@@ -125,6 +125,7 @@ public class StudyPlanEditorDialog {
                 editPlan.setRepeatMode(repeatMode);
                 editPlan.setRemind(remind);
                 editPlan.setSyncStatus(StudyPlanEntity.SYNC_PENDING); // Mark for calendar sync
+                editPlan.setLastModifiedAt(System.currentTimeMillis());
                 repository.updatePlan(editPlan, () -> {
                     if (listener != null) listener.onSaved();
                 });

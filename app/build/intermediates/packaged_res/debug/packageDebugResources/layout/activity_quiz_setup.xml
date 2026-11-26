@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_background"
+    android:orientation="vertical"
+    android:padding="@dimen/screen_padding">
+
+    <!-- Top Bar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@color/color_text_primary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/space_8"
+            android:layout_toEndOf="@+id/btnBack"
+            android:text="Thiết lập bài trắc nghiệm"
+            android:textColor="@color/color_text_primary"
+            android:textSize="@dimen/text_title_large"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <!-- Resumable In-Progress Attempt Banner (Section 16.8) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardResumeBanner"
+        style="@style/Widget.CardMaster.Card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_16"
+        android:visibility="gone"
+        app:cardBackgroundColor="@color/color_secondary_container">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/card_padding">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BÀI LÀM CHƯA HOÀN THÀNH"
+                android:textColor="@color/color_on_secondary_container"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvResumeDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Bạn có một bài làm dở dang chưa hoàn tất. Bạn muốn làm tiếp hay bắt đầu lại?"
+                android:textColor="@color/color_text_primary"
+                android:textSize="@dimen/text_body_medium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_12"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnRestartFromBeginning"
+                    style="@style/Widget.CardMaster.Button.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:minHeight="44dp"
+                    android:text="Làm lại từ đầu"
+                    android:textSize="@dimen/text_label_small" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnResumeQuiz"
+                    style="@style/Widget.CardMaster.Button.Primary"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:minHeight="44dp"
+                    android:text="Làm tiếp"
+                    android:textSize="@dimen/text_label_small" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Normal Setup Options -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_20"
+        android:text="Chọn số lượng câu hỏi:"
+        android:textColor="@color/color_text_secondary"
+        android:textSize="@dimen/text_label_medium"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/rgQuestionCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <RadioButton
+            android:id="@+id/rbCount5"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="5 câu hỏi"
+            android:textColor="@color/color_text_primary"
+            android:textSize="@dimen/text_body_large" />
+
+        <RadioButton
+            android:id="@+id/rbCount10"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:checked="true"
+            android:text="10 câu hỏi"
+            android:textColor="@color/color_text_primary"
+            android:textSize="@dimen/text_body_large" />
+
+        <RadioButton
+            android:id="@+id/rbCount20"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="20 câu hỏi"
+            android:textColor="@color/color_text_primary"
+            android:textSize="@dimen/text_body_large" />
+
+        <RadioButton
+            android:id="@+id/rbCountAll"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Toàn bộ câu hỏi trong bộ thẻ"
+            android:textColor="@color/color_text_primary"
+            android:textSize="@dimen/text_body_large" />
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_20"
+        android:text="Giới hạn thời gian (tùy chọn):"
+        android:textColor="@color/color_text_secondary"
+        android:textSize="@dimen/text_label_medium"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/rgTimeLimit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <RadioButton
+            android:id="@+id/rbNoTimeLimit"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:checked="true"
+            android:text="Không giới hạn thời gian (Luyện tập)"
+            android:textColor="@color/color_text_primary"
+            android:textSize="@dimen/text_body_large" />
+
+        <RadioButton
+            android:id="@+id/rbTime5Min"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="5 phút"
+            android:textColor="@color/color_text_primary"
+            android:textSize="@dimen/text_body_large" />
+
+        <RadioButton
+            android:id="@+id/rbTime10Min"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="10 phút"
+            android:textColor="@color/color_text_primary"
+            android:textSize="@dimen/text_body_large" />
+    </RadioGroup>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnStartQuiz"
+        style="@style/Widget.CardMaster.Button.Primary"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:text="Bắt đầu làm bài"
+        app:icon="@drawable/ic_play"
+        app:iconGravity="textStart"
+        app:iconSize="20dp" />
+</LinearLayout>

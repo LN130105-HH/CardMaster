@@ -23,7 +23,7 @@ import java.util.concurrent.Executors;
         AttemptAnswerEntity.class,
         StudyPlanEntity.class,
         NotificationEntity.class
-}, version = 1, exportSchema = false)
+}, version = 2, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static volatile AppDatabase INSTANCE;
@@ -46,7 +46,8 @@ public abstract class AppDatabase extends RoomDatabase {
                             context.getApplicationContext(),
                             AppDatabase.class,
                             "cardmaster_database"
-                    ).addCallback(new Callback() {
+                    ).fallbackToDestructiveMigration()
+                    .addCallback(new Callback() {
                         @Override
                         public void onCreate(@NonNull SupportSQLiteDatabase db) {
                             super.onCreate(db);
@@ -66,6 +67,9 @@ public abstract class AppDatabase extends RoomDatabase {
 
         // 1. Default demo user
         UserEntity user = new UserEntity("Hoàng Vũ Lê Huy", "user@cardmaster.app", "123456", null, now);
+        user.setGender("Nam");
+        user.setDateOfBirth("15/08/2003");
+        user.setFirebaseUid("firebase_user_demo_01");
         long userId = db.userDao().insert(user);
 
         // 2. Default Subjects

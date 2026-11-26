@@ -24,6 +24,7 @@ public class StudyPlanEntity {
     private String calendarEventId;
     private long lastSyncedAt;
     private String syncStatus; // SYNCED, PENDING_SYNC, CONFLICT, DELETED
+    private long lastModifiedAt;
     private long createdAt;
 
     public StudyPlanEntity(long deckId, long userId, long scheduledTime, String repeatMode, boolean isRemind, String calendarEventId, long lastSyncedAt, String syncStatus, long createdAt) {
@@ -35,6 +36,7 @@ public class StudyPlanEntity {
         this.calendarEventId = calendarEventId;
         this.lastSyncedAt = lastSyncedAt;
         this.syncStatus = syncStatus;
+        this.lastModifiedAt = createdAt;
         this.createdAt = createdAt;
     }
 
@@ -64,6 +66,9 @@ public class StudyPlanEntity {
 
     public String getSyncStatus() { return syncStatus; }
     public void setSyncStatus(String syncStatus) { this.syncStatus = syncStatus; }
+
+    public long getLastModifiedAt() { return lastModifiedAt; }
+    public void setLastModifiedAt(long lastModifiedAt) { this.lastModifiedAt = lastModifiedAt; }
 
     public long getCreatedAt() { return createdAt; }
     public void setCreatedAt(long createdAt) { this.createdAt = createdAt; }

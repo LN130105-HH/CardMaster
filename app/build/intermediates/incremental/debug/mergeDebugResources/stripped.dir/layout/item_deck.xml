@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.CardMaster.Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/space_12">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/card_padding">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/llHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/btnMenu"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_badge_info"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_style"
+                    android:tint="@color/color_primary" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_12"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvDeckTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Room &amp; SQLite"
+                        android:textColor="@color/color_text_primary"
+                        android:textSize="@dimen/text_title_medium"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvSubjectName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lập trình di động"
+                        android:textColor="@color/color_text_secondary"
+                        android:textSize="@dimen/text_body_small" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/btnMenu"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="6dp"
+                android:src="@drawable/ic_more_vert"
+                android:tint="@color/color_text_secondary" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvCardStats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_12"
+            android:text="12/20 thẻ đã nhớ"
+            android:textColor="@color/color_text_secondary"
+            android:textSize="@dimen/text_body_small" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progressBar"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/progress_bar_height"
+                android:layout_weight="1"
+                android:progress="60"
+                app:indicatorColor="@color/color_primary"
+                app:trackColor="@color/color_surface_variant"
+                app:trackCornerRadius="999dp" />
+
+            <TextView
+                android:id="@+id/tvProgressPercent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_8"
+                android:text="60%"
+                android:textColor="@color/color_text_secondary"
+                android:textSize="@dimen/text_label_small"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_12"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnStudyFlashcard"
+                style="@style/Widget.CardMaster.Button.Primary"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:minHeight="44dp"
+                android:text="Học Thẻ"
+                android:textSize="@dimen/text_label_large"
+                app:icon="@drawable/ic_style"
+                app:iconSize="16dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnStartQuiz"
+                style="@style/Widget.CardMaster.Button.Secondary"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="@dimen/space_8"
+                android:layout_weight="1"
+                android:minHeight="44dp"
+                android:text="Làm Quiz"
+                android:textSize="@dimen/text_label_large"
+                app:icon="@drawable/ic_quiz"
+                app:iconSize="16dp" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

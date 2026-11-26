@@ -48,7 +48,8 @@ public class FlipCardView extends FrameLayout {
             backView = getChildAt(1);
             frontView.setVisibility(VISIBLE);
             backView.setVisibility(GONE);
-            backView.setRotationY(180f);
+            frontView.setRotationY(0f);
+            backView.setRotationY(0f);
         }
     }
 
@@ -74,12 +75,12 @@ public class FlipCardView extends FrameLayout {
         final View currentHidden = isShowingFront ? backView : frontView;
 
         // 1st half of flip: 0 to 90 degrees
-        ObjectAnimator flipOut = ObjectAnimator.ofFloat(this, "rotationY", isShowingFront ? 0f : 180f, isShowingFront ? 90f : 270f);
+        ObjectAnimator flipOut = ObjectAnimator.ofFloat(this, "rotationY", 0f, 90f);
         flipOut.setDuration(125);
         flipOut.setInterpolator(new AccelerateDecelerateInterpolator());
 
-        // 2nd half of flip: 90 to 180 degrees
-        final ObjectAnimator flipIn = ObjectAnimator.ofFloat(this, "rotationY", isShowingFront ? 270f : 90f, isShowingFront ? 360f : 0f);
+        // 2nd half of flip: 270 to 360 degrees (visually -90 to 0)
+        final ObjectAnimator flipIn = ObjectAnimator.ofFloat(this, "rotationY", 270f, 360f);
         flipIn.setDuration(125);
         flipIn.setInterpolator(new AccelerateDecelerateInterpolator());
 
@@ -110,7 +111,13 @@ public class FlipCardView extends FrameLayout {
     public void resetToFront() {
         isShowingFront = true;
         setRotationY(0f);
-        if (frontView != null) frontView.setVisibility(VISIBLE);
-        if (backView != null) backView.setVisibility(GONE);
+        if (frontView != null) {
+            frontView.setVisibility(VISIBLE);
+            frontView.setRotationY(0f);
+        }
+        if (backView != null) {
+            backView.setVisibility(GONE);
+            backView.setRotationY(0f);
+        }
     }
 }

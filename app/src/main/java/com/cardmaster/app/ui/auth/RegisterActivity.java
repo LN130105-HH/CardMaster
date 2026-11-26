@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.cardmaster.app.data.auth.FirebaseAuthManager;
 import com.cardmaster.app.data.local.AppDatabase;
 import com.cardmaster.app.data.local.entity.UserEntity;
 import com.cardmaster.app.databinding.ActivityRegisterBinding;
@@ -19,6 +20,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private ActivityRegisterBinding binding;
     private SessionManager sessionManager;
+    private FirebaseAuthManager authManager;
     private AppDatabase db;
 
     @Override
@@ -28,6 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         sessionManager = new SessionManager(this);
+        authManager = new FirebaseAuthManager(this);
         db = AppDatabase.getInstance(this);
 
         binding.btnRegister.setOnClickListener(v -> performRegister());
@@ -68,26 +71,47 @@ public class RegisterActivity extends AppCompatActivity {
             binding.tilConfirmPassword.setError(null);
         }
 
-        Executors.newSingleThreadExecutor().execute(() -> {
-            UserEntity existing = db.userDao().findByEmail(email);
-            if (existing != null) {
+        binding.btnRegister.setEnabled(false);
+
+        authManager.register(email, password, name, "Nam", "15/08/2003", new FirebaseAuthManager.AuthCallback() {
+            @Override
+            public void onSuccess(UserEntity user) {
                 runOnUiThread(() -> {
-                    binding.tilEmail.setError("Email này đã được sử dụng");
+                    binding.btnRegister.setEnabled(true);
+                    Toast.makeText(RegisterActivity.this, "Đăng ký tài khoản Firebase thành công!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
                 });
-                return;
             }
 
-            UserEntity newUser = new UserEntity(name, email, password, null, System.currentTimeMillis());
-            long newId = db.userDao().insert(newUser);
-
-            runOnUiThread(() -> {
-                Toast.makeText(this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
-                sessionManager.createLoginSession(newId, name, email);
-                Intent intent = new Intent(this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                finish();
-            });
+            @Override
+            public void onError(String message) {
+                runOnUiThread(() -> {
+                    // Check local DB fallback
+                    Executors.newSingleThreadExecutor().execute(() -> {
+                        UserEntity existing = db.userDao().findByEmail(email);
+                        runOnUiThread(() -> {
+                            binding.btnRegister.setEnabled(true);
+                            if (existing != null) {
+                                binding.tilEmail.setError("Email này đã được sử dụng");
+                            } else {
+                                // If offline, register in local DB
+                                UserEntity newUser = new UserEntity("offline_" + System.currentTimeMillis(), name, email, "", "Nam", "15/08/2003", System.currentTimeMillis());
+                                newUser.setPasswordHash(password);
+                                long newId = db.userDao().insert(newUser);
+                                sessionManager.createLoginSession(newId, name, email, newUser.getFirebaseUid());
+                                Toast.makeText(RegisterActivity.this, "Đăng ký thành công (cục bộ): " + message, Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
+                    });
+                });
+            }
         });
     }
 }

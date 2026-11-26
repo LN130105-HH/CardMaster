@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="color_accent">#F59E0B</color>
+    <color name="color_accent_container">#FEF3C7</color>
+    <color name="color_background">#F8FAFC</color>
+    <color name="color_divider">#E2E8F0</color>
+    <color name="color_error">#DC2626</color>
+    <color name="color_error_container">#FEE2E2</color>
+    <color name="color_flashcard">#4F46E5</color>
+    <color name="color_flashcard_container">#E0E7FF</color>
+    <color name="color_info">#0EA5E9</color>
+    <color name="color_info_container">#E0F2FE</color>
+    <color name="color_on_error_container">#7F1D1D</color>
+    <color name="color_on_primary">#FFFFFF</color>
+    <color name="color_on_primary_container">#1E1B4B</color>
+    <color name="color_on_secondary">#FFFFFF</color>
+    <color name="color_on_secondary_container">#0C4A6E</color>
+    <color name="color_on_success_container">#14532D</color>
+    <color name="color_on_warning_container">#78350F</color>
+    <color name="color_outline">#CBD5E1</color>
+    <color name="color_primary">#4F46E5</color>
+    <color name="color_primary_container">#E0E7FF</color>
+    <color name="color_quiz">#0EA5E9</color>
+    <color name="color_quiz_container">#E0F2FE</color>
+    <color name="color_secondary">#0EA5E9</color>
+    <color name="color_secondary_container">#E0F2FE</color>
+    <color name="color_success">#16A34A</color>
+    <color name="color_success_container">#DCFCE7</color>
+    <color name="color_surface">#FFFFFF</color>
+    <color name="color_surface_variant">#EEF2F7</color>
+    <color name="color_text_disabled">#94A3B8</color>
+    <color name="color_text_primary">#0F172A</color>
+    <color name="color_text_secondary">#475569</color>
+    <color name="color_warning">#F59E0B</color>
+    <color name="color_warning_container">#FEF3C7</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <dimen name="bottom_nav_height">72dp</dimen>
+    <dimen name="button_height">52dp</dimen>
+    <dimen name="card_padding">16dp</dimen>
+    <dimen name="corner_radius_button">16dp</dimen>
+    <dimen name="corner_radius_card">16dp</dimen>
+    <dimen name="corner_radius_chip">999dp</dimen>
+    <dimen name="corner_radius_dialog">24dp</dimen>
+    <dimen name="corner_radius_fab">16dp</dimen>
+    <dimen name="corner_radius_flashcard">24dp</dimen>
+    <dimen name="corner_radius_input">12dp</dimen>
+    <dimen name="corner_radius_progress">999dp</dimen>
+    <dimen name="corner_radius_quiz_option">12dp</dimen>
+    <dimen name="flashcard_min_height">320dp</dimen>
+    <dimen name="input_height">56dp</dimen>
+    <dimen name="progress_bar_height">8dp</dimen>
+    <dimen name="quiz_option_height">56dp</dimen>
+    <dimen name="screen_padding">16dp</dimen>
+    <dimen name="space_12">12dp</dimen>
+    <dimen name="space_16">16dp</dimen>
+    <dimen name="space_20">20dp</dimen>
+    <dimen name="space_24">24dp</dimen>
+    <dimen name="space_32">32dp</dimen>
+    <dimen name="space_4">4dp</dimen>
+    <dimen name="space_8">8dp</dimen>
+    <dimen name="text_body_large">16sp</dimen>
+    <dimen name="text_body_medium">14sp</dimen>
+    <dimen name="text_body_small">12sp</dimen>
+    <dimen name="text_display_large">32sp</dimen>
+    <dimen name="text_headline_large">28sp</dimen>
+    <dimen name="text_headline_medium">24sp</dimen>
+    <dimen name="text_label_large">14sp</dimen>
+    <dimen name="text_label_medium">12sp</dimen>
+    <dimen name="text_label_small">11sp</dimen>
+    <dimen name="text_title_large">20sp</dimen>
+    <dimen name="text_title_medium">16sp</dimen>
+    <dimen name="text_title_small">14sp</dimen>
+    <dimen name="top_app_bar_height">64dp</dimen>
+    <string name="ai_create">Tạo bằng Gemini AI</string>
+    <string name="all_subjects">Tất cả</string>
+    <string name="app_name">CardMaster</string>
+    <string name="btn_add_deck">Tạo bộ thẻ</string>
+    <string name="btn_add_subject">Thêm môn</string>
+    <string name="btn_flip_card">Lật thẻ</string>
+    <string name="btn_flip_explanation">Lật thẻ để xem giải thích</string>
+    <string name="btn_login">Đăng nhập</string>
+    <string name="btn_memorized">Đã nhớ</string>
+    <string name="btn_next_question">Câu tiếp theo</string>
+    <string name="btn_not_memorized">Chưa nhớ</string>
+    <string name="btn_register">Đăng ký</string>
+    <string name="btn_reset_password">Gửi liên kết đặt lại mật khẩu</string>
+    <string name="btn_skip_question">Bỏ qua câu này</string>
+    <string name="card_type_flashcard">Flashcard</string>
+    <string name="card_type_quiz">Quiz Card</string>
+    <string name="clear_all_notifications">Xóa tất cả</string>
+    <string name="confirm_password_hint">Xác nhận mật khẩu</string>
+    <string name="continue_study">Học tiếp</string>
+    <string name="decks">Bộ thẻ</string>
+    <string name="email_hint">Email</string>
+    <string name="export_file">Xuất file</string>
+    <string name="filter_30_days">30 ngày</string>
+    <string name="filter_7_days">7 ngày</string>
+    <string name="filter_all">Tất cả</string>
+    <string name="filter_today">Hôm nay</string>
+    <string name="forgot_password">Quên mật khẩu?</string>
+    <string name="full_name_hint">Họ và tên</string>
+    <string name="gcm_defaultSenderId" translatable="false">859226194402</string>
+    <string name="google_api_key" translatable="false">AIzaSyBfWD7X01UVwJKXnA0e-3l3Ogkl4KR46Es</string>
+    <string name="google_app_id" translatable="false">1:859226194402:android:51531d25c758bdcbe1b9bb</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBfWD7X01UVwJKXnA0e-3l3Ogkl4KR46Es</string>
+    <string name="google_storage_bucket" translatable="false">cardmaster-684dc.firebasestorage.app</string>
+    <string name="greeting">Xin chào,</string>
+    <string name="have_account">Đã có tài khoản? Đăng nhập</string>
+    <string name="import_file">Nhập file CSV/Excel</string>
+    <string name="login_subtitle">Chào mừng bạn quay lại CardMaster</string>
+    <string name="login_title">Đăng nhập</string>
+    <string name="logout">Đăng xuất</string>
+    <string name="memorized_cards">Đã nhớ</string>
+    <string name="nav_chat_ai">Chat AI</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_statistics">Thống kê</string>
+    <string name="nav_storage">Storage</string>
+    <string name="need_review_cards">Cần ôn lại</string>
+    <string name="no_account">Chưa có tài khoản? Đăng ký ngay</string>
+    <string name="notifications_title">Thông báo</string>
+    <string name="password_hint">Mật khẩu</string>
+    <string name="project_id" translatable="false">cardmaster-684dc</string>
+    <string name="quiz_stat_title">BÀI TẬP ĐÃ LÀM</string>
+    <string name="recent_activity">Hoạt động gần đây</string>
+    <string name="search_hint">Tìm kiếm môn học, bộ thẻ...</string>
+    <string name="study_planner_title">Lịch ôn tập</string>
+    <string name="study_time_title">THỜI GIAN HỌC TẬP</string>
+    <string name="subjects">Môn học / Chủ đề</string>
+    <string name="sync_google_calendar">Đồng bộ Google Calendar</string>
+    <string name="total_cards">Tổng số thẻ</string>
+    <string name="upcoming_plans">Lịch ôn sắp tới</string>
+    <style name="Theme.CardMaster" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorOnPrimary">@color/color_on_primary</item>
+        <item name="colorPrimaryContainer">@color/color_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/color_on_primary_container</item>
+
+        <item name="colorSecondary">@color/color_secondary</item>
+        <item name="colorOnSecondary">@color/color_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/color_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/color_on_secondary_container</item>
+
+        <item name="android:colorBackground">@color/color_background</item>
+        <item name="colorSurface">@color/color_surface</item>
+        <item name="colorOutline">@color/color_outline</item>
+
+        <item name="android:statusBarColor">@color/color_surface</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+    <style name="Widget.CardMaster.Button.Danger" parent="Widget.Material3.Button">
+        <item name="android:backgroundTint">@color/color_error</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">@dimen/corner_radius_button</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:textSize">@dimen/text_title_medium</item>
+    </style>
+    <style name="Widget.CardMaster.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/color_outline</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="android:textColor">@color/color_text_primary</item>
+        <item name="cornerRadius">@dimen/corner_radius_button</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:textSize">@dimen/text_title_medium</item>
+    </style>
+    <style name="Widget.CardMaster.Button.Primary" parent="Widget.Material3.Button">
+        <item name="android:backgroundTint">@color/color_primary</item>
+        <item name="android:textColor">@color/color_on_primary</item>
+        <item name="cornerRadius">@dimen/corner_radius_button</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:textSize">@dimen/text_title_medium</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Widget.CardMaster.Button.Secondary" parent="Widget.Material3.Button.TonalButton">
+        <item name="android:backgroundTint">@color/color_secondary_container</item>
+        <item name="android:textColor">@color/color_on_secondary_container</item>
+        <item name="cornerRadius">@dimen/corner_radius_button</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:textSize">@dimen/text_title_medium</item>
+    </style>
+    <style name="Widget.CardMaster.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/color_surface</item>
+        <item name="cardCornerRadius">@dimen/corner_radius_card</item>
+        <item name="cardElevation">1dp</item>
+    </style>
+    <style name="Widget.CardMaster.Flashcard" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/color_surface</item>
+        <item name="cardCornerRadius">@dimen/corner_radius_flashcard</item>
+        <item name="cardElevation">2dp</item>
+    </style>
+    <style name="Widget.CardMaster.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/color_primary</item>
+        <item name="boxCornerRadiusTopStart">@dimen/corner_radius_input</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/corner_radius_input</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/corner_radius_input</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/corner_radius_input</item>
+        <item name="hintTextColor">@color/color_text_secondary</item>
+    </style>
+</resources>
