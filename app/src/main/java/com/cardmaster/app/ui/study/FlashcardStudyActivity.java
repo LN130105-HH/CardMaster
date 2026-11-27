@@ -28,7 +28,8 @@ public class FlashcardStudyActivity extends AppCompatActivity {
     private AppDatabase db;
 
     private long deckId = -1;
-    private List<CardEntity> flashcards = new ArrayList<>();
+    private List<CardEntity> originalFlashcards = new ArrayList<>();   // dữ liệu gốc từ DB
+    private List<CardEntity> flashcards = new ArrayList<>();           // thứ tự đang học
     private int currentIndex = 0;
     private int memorizedCount = 0;
     private int needReviewCount = 0;
@@ -60,10 +61,30 @@ public class FlashcardStudyActivity extends AppCompatActivity {
                     finish();
                     return;
                 }
-                flashcards = cards;
-                displayCurrentCard();
+                originalFlashcards = cards;   // giữ nguyên dữ liệu gốc từ DB
+                showStartOrderDialog();       // hỏi trộn hay không rồi mới bắt đầu học
             });
         });
+    }
+
+    // Trộn thứ tự Flashcard trước khi bắt đầu học
+    private void showStartOrderDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Bắt đầu học")
+                .setMessage("Bạn muốn học các thẻ theo thứ tự nào?")
+                .setCancelable(false)
+                .setPositiveButton("Trộn thẻ", (dialog, which) -> startStudy(true))
+                .setNegativeButton("Theo thứ tự", (dialog, which) -> startStudy(false))
+                .setNeutralButton("Huỷ", (dialog, which) -> finish())
+                .show();
+    }
+
+    private void startStudy(boolean shuffle) {
+        // không sửa originalFlashcards và không ghi gì vào Database
+        flashcards = shuffle ? ShuffleUtils.shuffled(originalFlashcards) : new ArrayList<>(originalFlashcards);
+        currentIndex = 0;
+        sessionStartTime = System.currentTimeMillis();   // không tính thời gian chờ chọn vào thời gian học
+        displayCurrentCard();
     }
 
     private void displayCurrentCard() {

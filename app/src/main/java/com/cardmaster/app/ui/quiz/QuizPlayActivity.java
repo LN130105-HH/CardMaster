@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -19,6 +20,8 @@ import com.cardmaster.app.data.local.entity.CardEntity;
 import com.cardmaster.app.data.local.entity.QuizAttemptEntity;
 import com.cardmaster.app.data.repository.AppRepository;
 import com.cardmaster.app.databinding.ActivityQuizPlayBinding;
+import com.cardmaster.app.ui.study.QuizItem;
+import com.cardmaster.app.ui.study.ShuffleUtils;
 import com.cardmaster.app.util.SessionManager;
 
 import java.util.ArrayList;
@@ -38,7 +41,19 @@ public class QuizPlayActivity extends AppCompatActivity {
     private int targetCount = 10;
     private int timeLimitSec = 0;
 
-    private List<CardEntity> quizCards = new ArrayList<>();
+    // Danh sách câu hỏi của phiên làm bài (đã trộn nếu người dùng chọn).
+    // Đây là bản sao trong bộ nhớ, dữ liệu gốc trong Database không bị thay đổi.
+    private List<QuizItem> quizItems = new ArrayList<>();
+    private boolean shuffleQuestions = false;
+    private boolean shuffleOptions = false;
+
+    // 4 ô đáp án A, B, C, D trên màn hình (vị trí 0..3)
+    private LinearLayout[] optionCards;
+    private TextView[] optionPrefixes;
+    private TextView[] optionTexts;
+
+    private OnBackPressedCallback backCallback;
+    private AlertDialog exitDialog;
     private int currentIndex = 0;
     private boolean isAnswered = false;
 
@@ -58,6 +73,10 @@ public class QuizPlayActivity extends AppCompatActivity {
         binding = ActivityQuizPlayBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        optionCards = new LinearLayout[]{binding.cardOptionA, binding.cardOptionB, binding.cardOptionC, binding.cardOptionD};
+        optionPrefixes = new TextView[]{binding.tvOptionPrefixA, binding.tvOptionPrefixB, binding.tvOptionPrefixC, binding.tvOptionPrefixD};
+        optionTexts = new TextView[]{binding.tvOptionTextA, binding.tvOptionTextB, binding.tvOptionTextC, binding.tvOptionTextD};
+
         repository = new AppRepository(getApplication());
         sessionManager = new SessionManager(this);
         db = AppDatabase.getInstance(this);
@@ -67,10 +86,13 @@ public class QuizPlayActivity extends AppCompatActivity {
         int resumeIndex = getIntent().getIntExtra("RESUME_INDEX", 0);
         targetCount = getIntent().getIntExtra("TARGET_COUNT", 10);
         timeLimitSec = getIntent().getIntExtra("TIME_LIMIT_SEC", 0);
+        shuffleQuestions = getIntent().getBooleanExtra("SHUFFLE_QUESTIONS", false);
+        shuffleOptions = getIntent().getBooleanExtra("SHUFFLE_OPTIONS", false);
 
         quizStartTime = System.currentTimeMillis();
         currentIndex = resumeIndex;
 
+        setupBackHandling();
         loadQuestions();
         setupListeners();
         setupTimer();
@@ -108,14 +130,19 @@ public class QuizPlayActivity extends AppCompatActivity {
                 return;
             }
 
-            int count = Math.min(targetCount, cards.size());
-            quizCards = new ArrayList<>(cards.subList(0, count));
+            // giữ nguyên thứ tự gốc để RESUME_INDEX còn đúng.
+            boolean resuming = attemptId != -1;
+            // buildQuizSession làm việc trên bản sao, không đổi list lấy từ DB.
+            List<QuizItem> session = ShuffleUtils.buildQuizSession(
+                    cards, !resuming && shuffleQuestions, !resuming && shuffleOptions);
+            int count = Math.min(targetCount, session.size());
+            quizItems = new ArrayList<>(session.subList(0, count));
 
             if (attemptId != -1) {
                 currentAttempt = db.quizAttemptDao().getById(attemptId);
             }
             if (currentAttempt == null) {
-                currentAttempt = new QuizAttemptEntity(deckId, sessionManager.getUserId(), quizStartTime, quizCards.size());
+                currentAttempt = new QuizAttemptEntity(deckId, sessionManager.getUserId(), quizStartTime, quizItems.size());
                 long newId = db.quizAttemptDao().insert(currentAttempt);
                 currentAttempt.setId(newId);
             }
@@ -125,42 +152,33 @@ public class QuizPlayActivity extends AppCompatActivity {
     }
 
     private void displayCurrentQuestion() {
-        if (currentIndex >= quizCards.size()) {
+        if (currentIndex >= quizItems.size()) {
             finishQuiz();
             return;
         }
 
         isAnswered = false;
         questionStartTime = System.currentTimeMillis();
-        CardEntity card = quizCards.get(currentIndex);
+        QuizItem item = quizItems.get(currentIndex);
+        CardEntity card = item.getSource();
 
-        binding.tvQuizProgressCounter.setText("Câu " + (currentIndex + 1) + " / " + quizCards.size());
-        int progress = (int) (((currentIndex + 1) / (float) quizCards.size()) * 100);
+        binding.tvQuizProgressCounter.setText("Câu " + (currentIndex + 1) + " / " + quizItems.size());
+        int progress = (int) (((currentIndex + 1) / (float) quizItems.size()) * 100);
         binding.progressBar.setProgress(progress);
 
         binding.tvQuestionText.setText(card.getQuestion());
-        binding.tvOptionTextA.setText(card.getOptionA());
-        binding.tvOptionTextB.setText(card.getOptionB());
 
-        if (card.getOptionC() != null && !card.getOptionC().isEmpty()) {
-            binding.cardOptionC.setVisibility(View.VISIBLE);
-            binding.tvOptionTextC.setText(card.getOptionC());
-        } else {
-            binding.cardOptionC.setVisibility(View.GONE);
+        // Hiển thị đáp án theo thứ tự đã trộn: vị trí i (0..3) = A..D trên màn hình.
+        // Ẩn các ô thừa và reset lại màu của từng ô.
+        for (int i = 0; i < optionCards.length; i++) {
+            if (i < item.getOptionCount()) {
+                optionCards[i].setVisibility(View.VISIBLE);
+                optionTexts[i].setText(item.getOption(i));
+            } else {
+                optionCards[i].setVisibility(View.GONE);
+            }
+            resetOptionStyle(optionCards[i], optionPrefixes[i], optionTexts[i]);
         }
-
-        if (card.getOptionD() != null && !card.getOptionD().isEmpty()) {
-            binding.cardOptionD.setVisibility(View.VISIBLE);
-            binding.tvOptionTextD.setText(card.getOptionD());
-        } else {
-            binding.cardOptionD.setVisibility(View.GONE);
-        }
-
-        // Reset option styles
-        resetOptionStyle(binding.cardOptionA, binding.tvOptionPrefixA, binding.tvOptionTextA);
-        resetOptionStyle(binding.cardOptionB, binding.tvOptionPrefixB, binding.tvOptionTextB);
-        resetOptionStyle(binding.cardOptionC, binding.tvOptionPrefixC, binding.tvOptionTextC);
-        resetOptionStyle(binding.cardOptionD, binding.tvOptionPrefixD, binding.tvOptionTextD);
 
         // Hide explanation & disable next button
         binding.llExplanationSection.setVisibility(View.GONE);
@@ -177,7 +195,7 @@ public class QuizPlayActivity extends AppCompatActivity {
     }
 
     private void setupListeners() {
-        binding.btnBack.setOnClickListener(v -> onBackPressed());
+        binding.btnBack.setOnClickListener(v -> getOnBackPressedDispatcher().onBackPressed());
 
         binding.cardOptionA.setOnClickListener(v -> selectOption(0));
         binding.cardOptionB.setOnClickListener(v -> selectOption(1));
@@ -210,9 +228,14 @@ public class QuizPlayActivity extends AppCompatActivity {
         binding.btnSkipQuestion.setEnabled(false);
         binding.btnNextQuestion.setEnabled(true);
 
-        CardEntity card = quizCards.get(currentIndex);
-        int correctIdx = card.getCorrectIndex();
-        boolean isCorrect = (selectedIdx == correctIdx);
+        QuizItem item = quizItems.get(currentIndex);
+        CardEntity card = item.getSource();
+        // selectedIdx và correctIdx đều là vị trí trên ma hình (sau khi trộn).
+        // Chấm điểm bằng item.isCorrect(), KHÔNG so với card.getCorrectIndex() gốc.
+        int correctIdx = item.getCorrectIndex();
+        boolean isCorrect = item.isCorrect(selectedIdx);
+        // Lưu vào DB theo thứ tự GỐC (0=A..3=D) để dữ liệu thống kê không phụ thuộc vào lần trộn.
+        int selectedOriginal = item.getOriginalIndex(selectedIdx);
 
         long timeSpent = System.currentTimeMillis() - questionStartTime;
 
@@ -221,21 +244,20 @@ public class QuizPlayActivity extends AppCompatActivity {
             setOptionColor(selectedIdx, true);
             binding.tvResultStatus.setText("Chính xác ✓");
             binding.tvResultStatus.setTextColor(ContextCompat.getColor(this, R.color.color_success));
-            recordedAnswers.add(new AttemptAnswerEntity(currentAttempt.getId(), card.getId(), selectedIdx, AttemptAnswerEntity.STATUS_CORRECT, System.currentTimeMillis(), timeSpent));
+            recordedAnswers.add(new AttemptAnswerEntity(currentAttempt.getId(), card.getId(), selectedOriginal, AttemptAnswerEntity.STATUS_CORRECT, System.currentTimeMillis(), timeSpent));
         } else {
             wrongCount++;
             setOptionColor(selectedIdx, false); // Wrong option in red
-            setOptionColor(correctIdx, true);   // Correct option highlighted in green
+            if (correctIdx >= 0) setOptionColor(correctIdx, true);   // Correct option highlighted in green
             binding.tvResultStatus.setText("Chưa chính xác ✗");
             binding.tvResultStatus.setTextColor(ContextCompat.getColor(this, R.color.color_error));
-            recordedAnswers.add(new AttemptAnswerEntity(currentAttempt.getId(), card.getId(), selectedIdx, AttemptAnswerEntity.STATUS_WRONG, System.currentTimeMillis(), timeSpent));
+            recordedAnswers.add(new AttemptAnswerEntity(currentAttempt.getId(), card.getId(), selectedOriginal, AttemptAnswerEntity.STATUS_WRONG, System.currentTimeMillis(), timeSpent));
         }
 
         String prefix = getPrefix(selectedIdx);
-        String correctPrefix = getPrefix(correctIdx);
+        String correctPrefix = correctIdx >= 0 ? getPrefix(correctIdx) : "-";
         binding.tvUserChoiceSummary.setText("Bạn chọn: " + prefix + " • Đáp án đúng: " + correctPrefix);
-
-        // Explanation text and source
+        // (vd "Đáp án B...") thì khi trộn đáp án nhãn đó sẽ lệch với màn hình.
         String explanation = card.getExplanation();
         if (explanation == null || explanation.isEmpty()) {
             explanation = "Đáp án đúng là " + correctPrefix + ".";
@@ -254,19 +276,9 @@ public class QuizPlayActivity extends AppCompatActivity {
     }
 
     private void setOptionColor(int index, boolean isCorrect) {
-        LinearLayout card;
-        TextView prefix;
-        TextView text;
-
-        if (index == 0) {
-            card = binding.cardOptionA; prefix = binding.tvOptionPrefixA; text = binding.tvOptionTextA;
-        } else if (index == 1) {
-            card = binding.cardOptionB; prefix = binding.tvOptionPrefixB; text = binding.tvOptionTextB;
-        } else if (index == 2) {
-            card = binding.cardOptionC; prefix = binding.tvOptionPrefixC; text = binding.tvOptionTextC;
-        } else {
-            card = binding.cardOptionD; prefix = binding.tvOptionPrefixD; text = binding.tvOptionTextD;
-        }
+        LinearLayout card = optionCards[index];
+        TextView prefix = optionPrefixes[index];
+        TextView text = optionTexts[index];
 
         if (isCorrect) {
             card.setBackgroundResource(R.drawable.bg_quiz_option_correct);
@@ -290,7 +302,7 @@ public class QuizPlayActivity extends AppCompatActivity {
 
     private void skipCurrentQuestion() {
         if (isAnswered) return;
-        CardEntity card = quizCards.get(currentIndex);
+        CardEntity card = quizItems.get(currentIndex).getSource();
         skippedCount++;
         recordedAnswers.add(new AttemptAnswerEntity(currentAttempt.getId(), card.getId(), -1, AttemptAnswerEntity.STATUS_SKIPPED, System.currentTimeMillis(), 0));
 
@@ -301,11 +313,12 @@ public class QuizPlayActivity extends AppCompatActivity {
 
     private void finishQuiz() {
         if (timer != null) timer.cancel();
+        backCallback.setEnabled(false);   // đã nộp bài: Back không cần hỏi xác nhận nữa
 
         long endTime = System.currentTimeMillis();
         long durationSec = Math.max(1, (endTime - quizStartTime) / 1000);
 
-        int totalQuestions = quizCards.size();
+        int totalQuestions = quizItems.size();
         int scoredQuestions = totalQuestions - skippedCount;
         double scorePercent = scoredQuestions > 0 ? ((correctCount / (double) scoredQuestions) * 100.0) : 0.0;
 
@@ -341,29 +354,47 @@ public class QuizPlayActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setTitle("Tạm dừng bài trắc nghiệm?")
-                .setMessage("Tiến độ hiện tại sẽ được lưu lại để bạn có thể tiếp tục sau.")
-                .setPositiveButton("Tạm dừng & Thoát", (dialog, which) -> {
-                    if (timer != null) timer.cancel();
-                    if (currentAttempt != null) {
-                        currentAttempt.setResumedFromQuestionIndex(currentIndex);
-                        currentAttempt.setCorrectCount(correctCount);
-                        currentAttempt.setWrongCount(wrongCount);
-                        currentAttempt.setSkippedCount(skippedCount);
-                        repository.recordQuizAttempt(currentAttempt, recordedAnswers, null);
-                    }
-                    finish();
-                })
-                .setNegativeButton("Làm tiếp", null)
+    // Xác nhận khi thoát Quiz đang làm dở
+    // Dùng OnBackPressedCallback
+    private void setupBackHandling() {
+        backCallback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                showExitConfirmDialog();
+            }
+        };
+        getOnBackPressedDispatcher().addCallback(this, backCallback);
+    }
+
+    private void showExitConfirmDialog() {
+        if (exitDialog != null && exitDialog.isShowing()) return;
+        exitDialog = new AlertDialog.Builder(this)
+                .setTitle("Thoát bài Quiz?")
+                .setMessage("Tiến trình làm bài sẽ bị mất nếu bạn thoát.")
+                .setCancelable(false)   // bắt buộc chọn 1 trong 2 nút
+                .setNegativeButton("Ở lại", (dialog, which) -> dialog.dismiss())   // tiếp tục làm bài
+                .setPositiveButton("Thoát", (dialog, which) -> exitQuizAndDiscardProgress())   // xác nhận thoát
                 .show();
+    }
+
+    private void exitQuizAndDiscardProgress() {
+        if (timer != null) timer.cancel();
+        // Huỷ phiên đang làm dở để màn hình chuẩn bị Quiz không còn hiện banner "Làm tiếp"
+        if (currentAttempt != null) {
+            final QuizAttemptEntity attempt = currentAttempt;
+            Executors.newSingleThreadExecutor().execute(() -> {
+                attempt.setStatus(QuizAttemptEntity.STATUS_ABANDONED);
+                db.quizAttemptDao().update(attempt);
+            });
+        }
+        backCallback.setEnabled(false);   // tắt chặn để thoát được
+        finish();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         if (timer != null) timer.cancel();
+        if (exitDialog != null && exitDialog.isShowing()) exitDialog.dismiss();
     }
 }
