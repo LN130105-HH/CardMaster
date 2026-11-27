@@ -38,7 +38,7 @@ public final class StudyPlanDao_Impl implements StudyPlanDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR ABORT INTO `study_plans` (`id`,`deckId`,`userId`,`scheduledTime`,`repeatMode`,`isRemind`,`calendarEventId`,`lastSyncedAt`,`syncStatus`,`createdAt`) VALUES (nullif(?, 0),?,?,?,?,?,?,?,?,?)";
+        return "INSERT OR ABORT INTO `study_plans` (`id`,`deckId`,`userId`,`scheduledTime`,`repeatMode`,`isRemind`,`calendarEventId`,`lastSyncedAt`,`syncStatus`,`lastModifiedAt`,`createdAt`) VALUES (nullif(?, 0),?,?,?,?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -66,7 +66,8 @@ public final class StudyPlanDao_Impl implements StudyPlanDao {
         } else {
           statement.bindString(9, entity.getSyncStatus());
         }
-        statement.bindLong(10, entity.getCreatedAt());
+        statement.bindLong(10, entity.getLastModifiedAt());
+        statement.bindLong(11, entity.getCreatedAt());
       }
     };
     this.__deletionAdapterOfStudyPlanEntity = new EntityDeletionOrUpdateAdapter<StudyPlanEntity>(__db) {
@@ -86,7 +87,7 @@ public final class StudyPlanDao_Impl implements StudyPlanDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "UPDATE OR ABORT `study_plans` SET `id` = ?,`deckId` = ?,`userId` = ?,`scheduledTime` = ?,`repeatMode` = ?,`isRemind` = ?,`calendarEventId` = ?,`lastSyncedAt` = ?,`syncStatus` = ?,`createdAt` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `study_plans` SET `id` = ?,`deckId` = ?,`userId` = ?,`scheduledTime` = ?,`repeatMode` = ?,`isRemind` = ?,`calendarEventId` = ?,`lastSyncedAt` = ?,`syncStatus` = ?,`lastModifiedAt` = ?,`createdAt` = ? WHERE `id` = ?";
       }
 
       @Override
@@ -114,8 +115,9 @@ public final class StudyPlanDao_Impl implements StudyPlanDao {
         } else {
           statement.bindString(9, entity.getSyncStatus());
         }
-        statement.bindLong(10, entity.getCreatedAt());
-        statement.bindLong(11, entity.getId());
+        statement.bindLong(10, entity.getLastModifiedAt());
+        statement.bindLong(11, entity.getCreatedAt());
+        statement.bindLong(12, entity.getId());
       }
     };
   }
@@ -178,6 +180,7 @@ public final class StudyPlanDao_Impl implements StudyPlanDao {
           final int _cursorIndexOfCalendarEventId = CursorUtil.getColumnIndexOrThrow(_cursor, "calendarEventId");
           final int _cursorIndexOfLastSyncedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "lastSyncedAt");
           final int _cursorIndexOfSyncStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "syncStatus");
+          final int _cursorIndexOfLastModifiedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "lastModifiedAt");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
           final List<StudyPlanEntity> _result = new ArrayList<StudyPlanEntity>(_cursor.getCount());
           while (_cursor.moveToNext()) {
@@ -218,6 +221,9 @@ public final class StudyPlanDao_Impl implements StudyPlanDao {
             final long _tmpId;
             _tmpId = _cursor.getLong(_cursorIndexOfId);
             _item.setId(_tmpId);
+            final long _tmpLastModifiedAt;
+            _tmpLastModifiedAt = _cursor.getLong(_cursorIndexOfLastModifiedAt);
+            _item.setLastModifiedAt(_tmpLastModifiedAt);
             _result.add(_item);
           }
           return _result;
@@ -256,6 +262,7 @@ public final class StudyPlanDao_Impl implements StudyPlanDao {
           final int _cursorIndexOfCalendarEventId = CursorUtil.getColumnIndexOrThrow(_cursor, "calendarEventId");
           final int _cursorIndexOfLastSyncedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "lastSyncedAt");
           final int _cursorIndexOfSyncStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "syncStatus");
+          final int _cursorIndexOfLastModifiedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "lastModifiedAt");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
           final List<StudyPlanEntity> _result = new ArrayList<StudyPlanEntity>(_cursor.getCount());
           while (_cursor.moveToNext()) {
@@ -296,6 +303,9 @@ public final class StudyPlanDao_Impl implements StudyPlanDao {
             final long _tmpId;
             _tmpId = _cursor.getLong(_cursorIndexOfId);
             _item.setId(_tmpId);
+            final long _tmpLastModifiedAt;
+            _tmpLastModifiedAt = _cursor.getLong(_cursorIndexOfLastModifiedAt);
+            _item.setLastModifiedAt(_tmpLastModifiedAt);
             _result.add(_item);
           }
           return _result;
@@ -329,6 +339,7 @@ public final class StudyPlanDao_Impl implements StudyPlanDao {
       final int _cursorIndexOfCalendarEventId = CursorUtil.getColumnIndexOrThrow(_cursor, "calendarEventId");
       final int _cursorIndexOfLastSyncedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "lastSyncedAt");
       final int _cursorIndexOfSyncStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "syncStatus");
+      final int _cursorIndexOfLastModifiedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "lastModifiedAt");
       final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
       final List<StudyPlanEntity> _result = new ArrayList<StudyPlanEntity>(_cursor.getCount());
       while (_cursor.moveToNext()) {
@@ -369,6 +380,9 @@ public final class StudyPlanDao_Impl implements StudyPlanDao {
         final long _tmpId;
         _tmpId = _cursor.getLong(_cursorIndexOfId);
         _item.setId(_tmpId);
+        final long _tmpLastModifiedAt;
+        _tmpLastModifiedAt = _cursor.getLong(_cursorIndexOfLastModifiedAt);
+        _item.setLastModifiedAt(_tmpLastModifiedAt);
         _result.add(_item);
       }
       return _result;
@@ -400,6 +414,7 @@ public final class StudyPlanDao_Impl implements StudyPlanDao {
       final int _cursorIndexOfCalendarEventId = CursorUtil.getColumnIndexOrThrow(_cursor, "calendarEventId");
       final int _cursorIndexOfLastSyncedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "lastSyncedAt");
       final int _cursorIndexOfSyncStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "syncStatus");
+      final int _cursorIndexOfLastModifiedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "lastModifiedAt");
       final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
       final StudyPlanEntity _result;
       if (_cursor.moveToFirst()) {
@@ -439,6 +454,9 @@ public final class StudyPlanDao_Impl implements StudyPlanDao {
         final long _tmpId;
         _tmpId = _cursor.getLong(_cursorIndexOfId);
         _result.setId(_tmpId);
+        final long _tmpLastModifiedAt;
+        _tmpLastModifiedAt = _cursor.getLong(_cursorIndexOfLastModifiedAt);
+        _result.setLastModifiedAt(_tmpLastModifiedAt);
       } else {
         _result = null;
       }
@@ -467,6 +485,7 @@ public final class StudyPlanDao_Impl implements StudyPlanDao {
       final int _cursorIndexOfCalendarEventId = CursorUtil.getColumnIndexOrThrow(_cursor, "calendarEventId");
       final int _cursorIndexOfLastSyncedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "lastSyncedAt");
       final int _cursorIndexOfSyncStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "syncStatus");
+      final int _cursorIndexOfLastModifiedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "lastModifiedAt");
       final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
       final StudyPlanEntity _result;
       if (_cursor.moveToFirst()) {
@@ -506,6 +525,9 @@ public final class StudyPlanDao_Impl implements StudyPlanDao {
         final long _tmpId;
         _tmpId = _cursor.getLong(_cursorIndexOfId);
         _result.setId(_tmpId);
+        final long _tmpLastModifiedAt;
+        _tmpLastModifiedAt = _cursor.getLong(_cursorIndexOfLastModifiedAt);
+        _result.setLastModifiedAt(_tmpLastModifiedAt);
       } else {
         _result = null;
       }

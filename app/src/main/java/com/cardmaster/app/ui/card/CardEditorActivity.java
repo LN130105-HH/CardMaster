@@ -26,6 +26,7 @@ public class CardEditorActivity extends AppCompatActivity {
     private long cardId = -1;
     private CardEntity editingCard;
     private boolean isFlashcardMode = true;
+    private int selectedCorrectIndex = 0; // 0 = A, 1 = B, 2 = C, 3 = D
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +40,31 @@ public class CardEditorActivity extends AppCompatActivity {
         deckId = getIntent().getLongExtra("DECK_ID", -1);
         cardId = getIntent().getLongExtra("CARD_ID", -1);
 
+        setupTypeSelector();
+        setupRadioGroupOptions();
+        setupListeners();
+
         if (cardId != -1) {
             binding.tvEditorTitle.setText("Chỉnh sửa thẻ");
             binding.btnSaveAndCreateNext.setVisibility(View.GONE);
             loadExistingCard();
         }
+    }
 
-        setupTypeSelector();
-        setupListeners();
+    private void setupRadioGroupOptions() {
+        binding.rbOptionA.setOnClickListener(v -> selectCorrectOption(0));
+        binding.rbOptionB.setOnClickListener(v -> selectCorrectOption(1));
+        binding.rbOptionC.setOnClickListener(v -> selectCorrectOption(2));
+        binding.rbOptionD.setOnClickListener(v -> selectCorrectOption(3));
+        selectCorrectOption(0);
+    }
+
+    private void selectCorrectOption(int index) {
+        selectedCorrectIndex = index;
+        binding.rbOptionA.setChecked(index == 0);
+        binding.rbOptionB.setChecked(index == 1);
+        binding.rbOptionC.setChecked(index == 2);
+        binding.rbOptionD.setChecked(index == 3);
     }
 
     private void setupTypeSelector() {
@@ -91,10 +109,7 @@ public class CardEditorActivity extends AppCompatActivity {
                         binding.etSourceFile.setText(editingCard.getSourceFile());
                         binding.etSourcePage.setText(editingCard.getSourcePage());
 
-                        if (editingCard.getCorrectIndex() == 0) binding.rbOptionA.setChecked(true);
-                        else if (editingCard.getCorrectIndex() == 1) binding.rbOptionB.setChecked(true);
-                        else if (editingCard.getCorrectIndex() == 2) binding.rbOptionC.setChecked(true);
-                        else if (editingCard.getCorrectIndex() == 3) binding.rbOptionD.setChecked(true);
+                        selectCorrectOption(editingCard.getCorrectIndex());
                     } else {
                         setCardMode(true);
                         binding.etFlashcardFront.setText(editingCard.getFront());
@@ -167,10 +182,12 @@ public class CardEditorActivity extends AppCompatActivity {
                 return;
             }
 
-            int correctIdx = 0;
-            if (binding.rbOptionB.isChecked()) correctIdx = 1;
-            else if (binding.rbOptionC.isChecked()) correctIdx = 2;
-            else if (binding.rbOptionD.isChecked()) correctIdx = 3;
+            if (selectedCorrectIndex < 0 || selectedCorrectIndex > 3) {
+                Toast.makeText(this, "Vui lòng chọn đáp án đúng", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            int correctIdx = selectedCorrectIndex;
 
             if (editingCard != null) {
                 editingCard.setType(CardEntity.TYPE_QUIZ);
@@ -199,7 +216,7 @@ public class CardEditorActivity extends AppCompatActivity {
                         binding.etOptionC.setText("");
                         binding.etOptionD.setText("");
                         binding.etQuizExplanation.setText("");
-                        binding.rbOptionA.setChecked(true);
+                        selectCorrectOption(0);
                         binding.etQuizQuestion.requestFocus();
                     } else {
                         finish();

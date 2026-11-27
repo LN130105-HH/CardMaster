@@ -16,13 +16,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.cardmaster.app.data.calendar.GoogleCalendarSyncManager;
 import com.cardmaster.app.data.local.AppDatabase;
-import com.cardmaster.app.data.local.entity.NotificationEntity;
 import com.cardmaster.app.data.local.entity.StudyPlanEntity;
 import com.cardmaster.app.data.repository.AppRepository;
 import com.cardmaster.app.databinding.ActivityStudyPlannerBinding;
 import com.cardmaster.app.ui.planner.adapter.StudyPlanAdapter;
 import com.cardmaster.app.util.GoogleCalendarHelper;
+import com.cardmaster.app.util.DateUtils;
 import com.cardmaster.app.util.SessionManager;
 import com.cardmaster.app.util.StudyReminderReceiver;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -40,6 +41,7 @@ public class StudyPlannerActivity extends AppCompatActivity {
     private SessionManager sessionManager;
     private AppDatabase db;
     private StudyPlanAdapter adapter;
+    private GoogleCalendarSyncManager syncManager;
 
     private long defaultDeckId = -1;
     private boolean isSyncing = false;
@@ -91,6 +93,7 @@ public class StudyPlannerActivity extends AppCompatActivity {
         repository = new AppRepository(getApplication());
         sessionManager = new SessionManager(this);
         db = AppDatabase.getInstance(this);
+        syncManager = new GoogleCalendarSyncManager(this);
 
         defaultDeckId = getIntent().getLongExtra("TARGET_DECK_ID", -1);
 
@@ -144,7 +147,7 @@ public class StudyPlannerActivity extends AppCompatActivity {
     private void showPlanOptions(StudyPlanEntity plan) {
         new AlertDialog.Builder(this)
                 .setTitle("Tùy chọn lịch ôn")
-                .setItems(new String[]{"Chỉnh sửa", "Xóa lịch"}, (dialog, which) -> {
+                .setItems(new String[]{"Chỉnh sửa", "Xóa lịch (Đồng bộ xóa Calendar)", "Mô phỏng xung đột với Calendar"}, (dialog, which) -> {
                     if (which == 0) {
                         StudyPlanEditorDialog.show(this, repository, sessionManager.getUserId(), plan, plan.getDeckId(), null);
                     } else if (which == 1) {

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gcm_defaultSenderId" translatable="false">859226194402</string>
+    <string name="google_api_key" translatable="false">AIzaSyBfWD7X01UVwJKXnA0e-3l3Ogkl4KR46Es</string>
+    <string name="google_app_id" translatable="false">1:859226194402:android:51531d25c758bdcbe1b9bb</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBfWD7X01UVwJKXnA0e-3l3Ogkl4KR46Es</string>
+    <string name="google_storage_bucket" translatable="false">cardmaster-684dc.firebasestorage.app</string>
+    <string name="project_id" translatable="false">cardmaster-684dc</string>
+</resources>

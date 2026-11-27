@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.cardmaster.app-mergeDebugResources-34:/values-v26/values-v26.xml",
+            "outputFile": "com.cardmaster.app-mergeDebugResources-47:/values-v26/values-v26.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\huyho\\.gradle\\caches\\8.9\\transforms\\2116ed16af5701295cdf79ce598aceaf\\transformed\\appcompat-1.6.1\\res\\values-v26\\values-v26.xml",
+                    "source": "C:\\Users\\huyho\\.gradle\\caches\\8.9\\transforms\\579d753937b639b745d9da945fcb2e84\\transformed\\appcompat-1.6.1\\res\\values-v26\\values-v26.xml",
                     "from": {
                         "startLines": "2,3,4,8,12,16",
                         "startColumns": "4,4,4,4,4,4",

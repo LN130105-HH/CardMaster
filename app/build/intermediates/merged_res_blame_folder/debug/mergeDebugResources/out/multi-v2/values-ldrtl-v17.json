@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.cardmaster.app-mergeDebugResources-34:/values-ldrtl-v17/values-ldrtl-v17.xml",
+            "outputFile": "com.cardmaster.app-mergeDebugResources-47:/values-ldrtl-v17/values-ldrtl-v17.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\huyho\\.gradle\\caches\\8.9\\transforms\\ca0945aa2db0e257fcfa32366348c7d5\\transformed\\material-1.11.0\\res\\values-ldrtl-v17\\values-ldrtl-v17.xml",
+                    "source": "C:\\Users\\huyho\\.gradle\\caches\\8.9\\transforms\\6b9eede037578eebcbe5322c7abbc83a\\transformed\\material-1.11.0\\res\\values-ldrtl-v17\\values-ldrtl-v17.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.CardMaster.Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/space_8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/card_padding">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvAttemptDeckTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Room &amp; SQLite trong Android"
+                android:textColor="@color/color_text_primary"
+                android:textSize="@dimen/text_title_medium"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvAttemptDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="10 câu • 8 đúng, 1 sai, 1 bỏ qua • 23/11/2026"
+                android:textColor="@color/color_text_secondary"
+                android:textSize="@dimen/text_body_small" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvAttemptScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_12"
+            android:text="88.9%"
+            android:textColor="@color/color_success"
+            android:textSize="@dimen/text_title_large"
+            android:textStyle="bold" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

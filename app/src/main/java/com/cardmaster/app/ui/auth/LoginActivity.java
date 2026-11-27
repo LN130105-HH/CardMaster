@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.cardmaster.app.data.auth.FirebaseAuthManager;
 import com.cardmaster.app.data.local.AppDatabase;
 import com.cardmaster.app.data.local.entity.UserEntity;
 import com.cardmaster.app.databinding.ActivityLoginBinding;
@@ -19,6 +20,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
     private SessionManager sessionManager;
+    private FirebaseAuthManager authManager;
     private AppDatabase db;
 
     @Override
@@ -28,12 +30,15 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         sessionManager = new SessionManager(this);
+        authManager = new FirebaseAuthManager(this);
         db = AppDatabase.getInstance(this);
 
         binding.btnLogin.setOnClickListener(v -> performLogin());
 
         binding.btnQuickDemoLogin.setOnClickListener(v -> {
-            sessionManager.createLoginSession(1, "Hoàng Vũ Lê Huy", "user@cardmaster.app");
+            sessionManager.createLoginSession(1, "Hoàng Vũ Lê Huy", "user@cardmaster.app", "demo_firebase_uid");
+            sessionManager.setGender("Nam");
+            sessionManager.setDateOfBirth("15/08/2003");
             goToMain();
         });
 
@@ -64,16 +69,39 @@ public class LoginActivity extends AppCompatActivity {
             binding.tilPassword.setError(null);
         }
 
-        Executors.newSingleThreadExecutor().execute(() -> {
-            UserEntity user = db.userDao().findByEmail(email);
-            runOnUiThread(() -> {
-                if (user != null && password.equals(user.getPasswordHash())) {
-                    sessionManager.createLoginSession(user.getId(), user.getFullName(), user.getEmail());
+        binding.btnLogin.setEnabled(false);
+
+        authManager.login(email, password, new FirebaseAuthManager.AuthCallback() {
+            @Override
+            public void onSuccess(UserEntity user) {
+                runOnUiThread(() -> {
+                    binding.btnLogin.setEnabled(true);
+                    Toast.makeText(LoginActivity.this, "Đăng nhập Firebase thành công!", Toast.LENGTH_SHORT).show();
                     goToMain();
-                } else {
-                    Toast.makeText(this, "Email hoặc mật khẩu không chính xác", Toast.LENGTH_SHORT).show();
-                }
-            });
+                });
+            }
+
+            @Override
+            public void onError(String message) {
+                runOnUiThread(() -> {
+                    // Fallback to local DB if offline
+                    Executors.newSingleThreadExecutor().execute(() -> {
+                        UserEntity localUser = db.userDao().findByEmail(email);
+                        runOnUiThread(() -> {
+                            binding.btnLogin.setEnabled(true);
+                            if (localUser != null && password.equals(localUser.getPasswordHash())) {
+                                sessionManager.createLoginSession(localUser.getId(), localUser.getFullName(), localUser.getEmail(), localUser.getFirebaseUid());
+                                if (localUser.getGender() != null) sessionManager.setGender(localUser.getGender());
+                                if (localUser.getDateOfBirth() != null) sessionManager.setDateOfBirth(localUser.getDateOfBirth());
+                                Toast.makeText(LoginActivity.this, "Đăng nhập tài khoản cục bộ thành công!", Toast.LENGTH_SHORT).show();
+                                goToMain();
+                            } else {
+                                Toast.makeText(LoginActivity.this, message, Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    });
+                });
+            }
         });
     }
 

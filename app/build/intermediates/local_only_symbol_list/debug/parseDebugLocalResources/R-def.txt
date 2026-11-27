@@ -146,6 +146,7 @@ id btnMenu
 id btnNextQuestion
 id btnNotMemorized
 id btnNotification
+id btnPickDob
 id btnPlannerSync
 id btnQuickDemoLogin
 id btnQuickStart
@@ -221,11 +222,13 @@ id etSubjectName
 id flipCardView
 id flipExplanationView
 id ivAvatar
+id ivAvatarPreview
 id ivCardTypeIcon
 id ivNotifIcon
 id ivResultIcon
 id llAiLoading
 id llAiThinking
+id llAvatarContainer
 id llBottomInput
 id llEmptyCards
 id llEmptyNotifications
@@ -251,6 +254,10 @@ id rbCount10
 id rbCount20
 id rbCount5
 id rbCountAll
+id rbGenderFemale
+id rbGenderMale
+id rbGenderOther
+id rbGenderUndisclosed
 id rbModeExtract
 id rbModeFlashcard
 id rbModeQuiz
@@ -263,6 +270,7 @@ id rbTime10Min
 id rbTime5Min
 id rgAiMode
 id rgCorrectAnswer
+id rgGender
 id rgQuestionCount
 id rgTimeLimit
 id rvAiDrafts
@@ -312,6 +320,7 @@ id tvCorrectCount
 id tvDeckDescription
 id tvDeckName
 id tvDeckTitle
+id tvDobError
 id tvDraftHeader
 id tvDuration
 id tvEditorTitle
@@ -319,6 +328,7 @@ id tvExplanationText
 id tvFlashcardCount
 id tvForgotPassword
 id tvFrontText
+id tvGenderError
 id tvGoToLogin
 id tvGoToRegister
 id tvGreeting
@@ -346,6 +356,7 @@ id tvPlanDeckTitle
 id tvPlanTime
 id tvPreviewStats
 id tvProfileEmail
+id tvProfileGenderDob
 id tvProfileName
 id tvProgressCounter
 id tvProgressPercent
@@ -364,6 +375,7 @@ id tvRowTitle
 id tvRowTypeBadge
 id tvScorePercentage
 id tvSelectDateTime
+id tvSelectedDob
 id tvSelectedFileName
 id tvSkippedCount
 id tvSourceInfo
@@ -447,6 +459,11 @@ string filter_all
 string filter_today
 string forgot_password
 string full_name_hint
+string gcm_defaultSenderId
+string google_api_key
+string google_app_id
+string google_crash_reporting_api_key
+string google_storage_bucket
 string greeting
 string have_account
 string import_file
@@ -463,6 +480,7 @@ string need_review_cards
 string no_account
 string notifications_title
 string password_hint
+string project_id
 string quiz_stat_title
 string recent_activity
 string search_hint

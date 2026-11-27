@@ -6,12 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.cardmaster.app.R;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import java.lang.NullPointerException;
@@ -20,10 +25,13 @@ import java.lang.String;
 
 public final class ActivityEditProfileBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final ScrollView rootView;
 
   @NonNull
   public final ImageView btnBack;
+
+  @NonNull
+  public final LinearLayout btnPickDob;
 
   @NonNull
   public final MaterialButton btnSave;
@@ -35,27 +43,73 @@ public final class ActivityEditProfileBinding implements ViewBinding {
   public final TextInputEditText etName;
 
   @NonNull
+  public final ShapeableImageView ivAvatarPreview;
+
+  @NonNull
+  public final LinearLayout llAvatarContainer;
+
+  @NonNull
+  public final RadioButton rbGenderFemale;
+
+  @NonNull
+  public final RadioButton rbGenderMale;
+
+  @NonNull
+  public final RadioButton rbGenderOther;
+
+  @NonNull
+  public final RadioButton rbGenderUndisclosed;
+
+  @NonNull
+  public final RadioGroup rgGender;
+
+  @NonNull
   public final TextInputLayout tilEmail;
 
   @NonNull
   public final TextInputLayout tilName;
 
-  private ActivityEditProfileBinding(@NonNull LinearLayout rootView, @NonNull ImageView btnBack,
-      @NonNull MaterialButton btnSave, @NonNull TextInputEditText etEmail,
-      @NonNull TextInputEditText etName, @NonNull TextInputLayout tilEmail,
-      @NonNull TextInputLayout tilName) {
+  @NonNull
+  public final TextView tvDobError;
+
+  @NonNull
+  public final TextView tvGenderError;
+
+  @NonNull
+  public final TextView tvSelectedDob;
+
+  private ActivityEditProfileBinding(@NonNull ScrollView rootView, @NonNull ImageView btnBack,
+      @NonNull LinearLayout btnPickDob, @NonNull MaterialButton btnSave,
+      @NonNull TextInputEditText etEmail, @NonNull TextInputEditText etName,
+      @NonNull ShapeableImageView ivAvatarPreview, @NonNull LinearLayout llAvatarContainer,
+      @NonNull RadioButton rbGenderFemale, @NonNull RadioButton rbGenderMale,
+      @NonNull RadioButton rbGenderOther, @NonNull RadioButton rbGenderUndisclosed,
+      @NonNull RadioGroup rgGender, @NonNull TextInputLayout tilEmail,
+      @NonNull TextInputLayout tilName, @NonNull TextView tvDobError,
+      @NonNull TextView tvGenderError, @NonNull TextView tvSelectedDob) {
     this.rootView = rootView;
     this.btnBack = btnBack;
+    this.btnPickDob = btnPickDob;
     this.btnSave = btnSave;
     this.etEmail = etEmail;
     this.etName = etName;
+    this.ivAvatarPreview = ivAvatarPreview;
+    this.llAvatarContainer = llAvatarContainer;
+    this.rbGenderFemale = rbGenderFemale;
+    this.rbGenderMale = rbGenderMale;
+    this.rbGenderOther = rbGenderOther;
+    this.rbGenderUndisclosed = rbGenderUndisclosed;
+    this.rgGender = rgGender;
     this.tilEmail = tilEmail;
     this.tilName = tilName;
+    this.tvDobError = tvDobError;
+    this.tvGenderError = tvGenderError;
+    this.tvSelectedDob = tvSelectedDob;
   }
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public ScrollView getRoot() {
     return rootView;
   }
 
@@ -86,6 +140,12 @@ public final class ActivityEditProfileBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btnPickDob;
+      LinearLayout btnPickDob = ViewBindings.findChildViewById(rootView, id);
+      if (btnPickDob == null) {
+        break missingId;
+      }
+
       id = R.id.btnSave;
       MaterialButton btnSave = ViewBindings.findChildViewById(rootView, id);
       if (btnSave == null) {
@@ -104,6 +164,48 @@ public final class ActivityEditProfileBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.ivAvatarPreview;
+      ShapeableImageView ivAvatarPreview = ViewBindings.findChildViewById(rootView, id);
+      if (ivAvatarPreview == null) {
+        break missingId;
+      }
+
+      id = R.id.llAvatarContainer;
+      LinearLayout llAvatarContainer = ViewBindings.findChildViewById(rootView, id);
+      if (llAvatarContainer == null) {
+        break missingId;
+      }
+
+      id = R.id.rbGenderFemale;
+      RadioButton rbGenderFemale = ViewBindings.findChildViewById(rootView, id);
+      if (rbGenderFemale == null) {
+        break missingId;
+      }
+
+      id = R.id.rbGenderMale;
+      RadioButton rbGenderMale = ViewBindings.findChildViewById(rootView, id);
+      if (rbGenderMale == null) {
+        break missingId;
+      }
+
+      id = R.id.rbGenderOther;
+      RadioButton rbGenderOther = ViewBindings.findChildViewById(rootView, id);
+      if (rbGenderOther == null) {
+        break missingId;
+      }
+
+      id = R.id.rbGenderUndisclosed;
+      RadioButton rbGenderUndisclosed = ViewBindings.findChildViewById(rootView, id);
+      if (rbGenderUndisclosed == null) {
+        break missingId;
+      }
+
+      id = R.id.rgGender;
+      RadioGroup rgGender = ViewBindings.findChildViewById(rootView, id);
+      if (rgGender == null) {
+        break missingId;
+      }
+
       id = R.id.tilEmail;
       TextInputLayout tilEmail = ViewBindings.findChildViewById(rootView, id);
       if (tilEmail == null) {
@@ -116,8 +218,28 @@ public final class ActivityEditProfileBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityEditProfileBinding((LinearLayout) rootView, btnBack, btnSave, etEmail,
-          etName, tilEmail, tilName);
+      id = R.id.tvDobError;
+      TextView tvDobError = ViewBindings.findChildViewById(rootView, id);
+      if (tvDobError == null) {
+        break missingId;
+      }
+
+      id = R.id.tvGenderError;
+      TextView tvGenderError = ViewBindings.findChildViewById(rootView, id);
+      if (tvGenderError == null) {
+        break missingId;
+      }
+
+      id = R.id.tvSelectedDob;
+      TextView tvSelectedDob = ViewBindings.findChildViewById(rootView, id);
+      if (tvSelectedDob == null) {
+        break missingId;
+      }
+
+      return new ActivityEditProfileBinding((ScrollView) rootView, btnBack, btnPickDob, btnSave,
+          etEmail, etName, ivAvatarPreview, llAvatarContainer, rbGenderFemale, rbGenderMale,
+          rbGenderOther, rbGenderUndisclosed, rgGender, tilEmail, tilName, tvDobError,
+          tvGenderError, tvSelectedDob);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

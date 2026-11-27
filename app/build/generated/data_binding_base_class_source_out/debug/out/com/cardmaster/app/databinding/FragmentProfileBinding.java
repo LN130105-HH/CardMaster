@@ -4,7 +4,6 @@ package com.cardmaster.app.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -14,6 +13,7 @@ import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.cardmaster.app.R;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.imageview.ShapeableImageView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -38,10 +38,13 @@ public final class FragmentProfileBinding implements ViewBinding {
   public final LinearLayout btnPlannerSync;
 
   @NonNull
-  public final ImageView ivAvatar;
+  public final ShapeableImageView ivAvatar;
 
   @NonNull
   public final TextView tvProfileEmail;
+
+  @NonNull
+  public final TextView tvProfileGenderDob;
 
   @NonNull
   public final TextView tvProfileName;
@@ -49,8 +52,9 @@ public final class FragmentProfileBinding implements ViewBinding {
   private FragmentProfileBinding(@NonNull NestedScrollView rootView,
       @NonNull LinearLayout btnChangePassword, @NonNull LinearLayout btnEditProfile,
       @NonNull LinearLayout btnGeminiConfig, @NonNull MaterialButton btnLogout,
-      @NonNull LinearLayout btnPlannerSync, @NonNull ImageView ivAvatar,
-      @NonNull TextView tvProfileEmail, @NonNull TextView tvProfileName) {
+      @NonNull LinearLayout btnPlannerSync, @NonNull ShapeableImageView ivAvatar,
+      @NonNull TextView tvProfileEmail, @NonNull TextView tvProfileGenderDob,
+      @NonNull TextView tvProfileName) {
     this.rootView = rootView;
     this.btnChangePassword = btnChangePassword;
     this.btnEditProfile = btnEditProfile;
@@ -59,6 +63,7 @@ public final class FragmentProfileBinding implements ViewBinding {
     this.btnPlannerSync = btnPlannerSync;
     this.ivAvatar = ivAvatar;
     this.tvProfileEmail = tvProfileEmail;
+    this.tvProfileGenderDob = tvProfileGenderDob;
     this.tvProfileName = tvProfileName;
   }
 
@@ -120,7 +125,7 @@ public final class FragmentProfileBinding implements ViewBinding {
       }
 
       id = R.id.ivAvatar;
-      ImageView ivAvatar = ViewBindings.findChildViewById(rootView, id);
+      ShapeableImageView ivAvatar = ViewBindings.findChildViewById(rootView, id);
       if (ivAvatar == null) {
         break missingId;
       }
@@ -128,6 +133,12 @@ public final class FragmentProfileBinding implements ViewBinding {
       id = R.id.tvProfileEmail;
       TextView tvProfileEmail = ViewBindings.findChildViewById(rootView, id);
       if (tvProfileEmail == null) {
+        break missingId;
+      }
+
+      id = R.id.tvProfileGenderDob;
+      TextView tvProfileGenderDob = ViewBindings.findChildViewById(rootView, id);
+      if (tvProfileGenderDob == null) {
         break missingId;
       }
 
@@ -139,7 +150,7 @@ public final class FragmentProfileBinding implements ViewBinding {
 
       return new FragmentProfileBinding((NestedScrollView) rootView, btnChangePassword,
           btnEditProfile, btnGeminiConfig, btnLogout, btnPlannerSync, ivAvatar, tvProfileEmail,
-          tvProfileName);
+          tvProfileGenderDob, tvProfileName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

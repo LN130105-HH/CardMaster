@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_background">
+
+    <!-- Header -->
+    <LinearLayout
+        android:id="@+id/llHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_surface"
+        android:elevation="1dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/screen_padding"
+        android:paddingVertical="@dimen/space_12">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_badge_info"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_smart_toy"
+                    android:tint="@color/color_secondary" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_12"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CardMaster AI"
+                        android:textColor="@color/color_text_primary"
+                        android:textSize="@dimen/text_title_large"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hỏi đáp kiến thức học tập với Gemini"
+                        android:textColor="@color/color_text_secondary"
+                        android:textSize="@dimen/text_body_small" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/btnConfigApiKey"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="6dp"
+                android:src="@drawable/ic_settings"
+                android:tint="@color/color_text_secondary" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!-- Message List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvChatMessages"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llBottomInput"
+        android:layout_below="@+id/llHeader"
+        android:clipToPadding="false"
+        android:padding="@dimen/screen_padding" />
+
+    <!-- AI Thinking / Loading Bar -->
+    <LinearLayout
+        android:id="@+id/llAiThinking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/llBottomInput"
+        android:layout_marginStart="@dimen/screen_padding"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_chat_ai"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="8dp"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:indeterminateTint="@color/color_primary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Gemini đang suy nghĩ câu trả lời..."
+            android:textColor="@color/color_text_secondary"
+            android:textSize="@dimen/text_body_small" />
+    </LinearLayout>
+
+    <!-- Bottom Input & Quick Suggestion Chips -->
+    <LinearLayout
+        android:id="@+id/llBottomInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_surface"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:padding="@dimen/space_12">
+
+        <!-- Suggestion Chips -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/chipSuggest1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_badge_neutral"
+                    android:gravity="center"
+                    android:paddingHorizontal="12dp"
+                    android:text="Giải thích Room Database là gì?"
+                    android:textColor="@color/color_text_secondary"
+                    android:textSize="@dimen/text_label_small" />
+
+                <TextView
+                    android:id="@+id/chipSuggest2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_badge_neutral"
+                    android:gravity="center"
+                    android:paddingHorizontal="12dp"
+                    android:text="Phân biệt Activity và Fragment"
+                    android:textColor="@color/color_text_secondary"
+                    android:textSize="@dimen/text_label_small" />
+
+                <TextView
+                    android:id="@+id/chipSuggest3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_badge_neutral"
+                    android:gravity="center"
+                    android:paddingHorizontal="12dp"
+                    android:text="Tóm tắt cách dùng MVVM trong Android"
+                    android:textColor="@color/color_text_secondary"
+                    android:textSize="@dimen/text_label_small" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etMessageInput"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_height"
+                android:layout_weight="1"
+                android:background="@drawable/bg_quiz_option_default"
+                android:hint="Nhập câu hỏi học tập..."
+                android:paddingHorizontal="@dimen/space_16"
+                android:textColor="@color/color_text_primary"
+                android:textSize="@dimen/text_body_medium" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSendMessage"
+                style="@style/Widget.CardMaster.Button.Primary"
+                android:layout_width="52dp"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginStart="@dimen/space_8"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                app:icon="@drawable/ic_send"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="20dp" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

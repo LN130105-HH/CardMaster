@@ -1,306 +1,302 @@
 [
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_bg_badge_neutral.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\bg_badge_neutral.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_bg_chip_unselected.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/bg_chip_unselected.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_activity_study_planner.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\activity_study_planner.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_edit.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_edit.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_item_chat_message.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\item_chat_message.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_item_subject_chip.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/item_subject_chip.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_activity_quiz_setup.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\activity_quiz_setup.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_add.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_add.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_activity_splash.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\activity_splash.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_activity_flashcard_study.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/activity_flashcard_study.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_check_circle.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_check_circle.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_activity_splash.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/activity_splash.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_add.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_add.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_activity_main.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_auto_awesome.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_auto_awesome.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_activity_login.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/activity_login.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_activity_register.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\activity_register.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_activity_quiz_play.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/activity_quiz_play.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_activity_card_editor.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\activity_card_editor.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_home.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_home.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_description.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_description.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_activity_study_planner.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/activity_study_planner.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_activity_forgot_password.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\activity_forgot_password.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_check_circle.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_check_circle.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_bg_chip_unselected.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\bg_chip_unselected.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_activity_register.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/activity_register.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_style.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_style.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_bg_quiz_option_default.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/bg_quiz_option_default.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_fragment_home.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\fragment_home.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_item_import_preview.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/item_import_preview.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_notifications.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_notifications.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_delete.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_delete.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_person.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_person.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_search.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_search.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_event.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_event.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_item_quiz_history.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/item_quiz_history.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_fragment_statistics.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\fragment_statistics.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_style.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_style.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_bg_badge_error.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\bg_badge_error.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_description.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_description.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_edit.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_edit.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_fragment_storage.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/fragment_storage.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_flip.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_flip.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_activity_edit_profile.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/activity_edit_profile.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_dialog_study_plan_editor.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\dialog_study_plan_editor.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_bg_badge_warning.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/bg_badge_warning.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_home.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_home.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_activity_change_password.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/activity_change_password.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\color_nav_item_color.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\color\\nav_item_color.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_play.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_play.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_item_subject_chip.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\item_subject_chip.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_upload_file.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_upload_file.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_activity_ai_document.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\activity_ai_document.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_dialog_subject_editor.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/dialog_subject_editor.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_smart_toy.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_smart_toy.xml"
+        "merged": "com.cardmaster.app-debug-49:/menu_bottom_nav_menu.xml.flat",
+        "source": "com.cardmaster.app-main-51:/menu/bottom_nav_menu.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_activity_deck_detail.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\activity_deck_detail.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_activity_card_editor.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/activity_card_editor.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_item_notification.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\item_notification.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_activity_import.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/activity_import.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_bg_quiz_option_default.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\bg_quiz_option_default.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_smart_toy.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_smart_toy.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_activity_main.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\activity_main.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_fragment_statistics.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/fragment_statistics.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_item_ai_preview.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\item_ai_preview.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_send.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_send.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_search.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_search.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_fragment_aichat.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/fragment_aichat.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_arrow_back.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_arrow_back.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_person.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_person.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_bg_quiz_option_correct.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\bg_quiz_option_correct.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_bg_badge_error.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/bg_badge_error.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_item_study_plan.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\item_study_plan.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_bg_badge_info.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/bg_badge_info.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_dialog_subject_editor.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\dialog_subject_editor.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_folder.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_folder.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_bg_quiz_option_wrong.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\bg_quiz_option_wrong.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_activity_ai_document.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/activity_ai_document.xml"
     },
     {
-        "merged": "com.cardmaster.app-debug-36:/layout_item_chat_message.xml.flat",
-        "source": "com.cardmaster.app-main-38:/layout/item_chat_message.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_fragment_home.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/fragment_home.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_play.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_play.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_settings.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_settings.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_fragment_profile.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\fragment_profile.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_item_card.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/item_card.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_bg_quiz_option_selected.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\bg_quiz_option_selected.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_item_study_plan.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/item_study_plan.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_activity_notification.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\activity_notification.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_activity_quiz_result.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/activity_quiz_result.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\menu_bottom_nav_menu.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\menu\\bottom_nav_menu.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_bg_chat_user.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/bg_chat_user.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_activity_quiz_result.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\activity_quiz_result.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_bg_chat_ai.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/bg_chat_ai.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_settings.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_settings.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_flip.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_flip.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_folder.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_folder.xml"
+        "merged": "com.cardmaster.app-debug-49:/color_nav_item_color.xml.flat",
+        "source": "com.cardmaster.app-main-51:/color/nav_item_color.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_logout.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_logout.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_item_notification.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/item_notification.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_more_vert.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_more_vert.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_event.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_event.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_activity_quiz_play.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\activity_quiz_play.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_bg_chip_selected.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/bg_chip_selected.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_quiz.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_quiz.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_dialog_deck_editor.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/dialog_deck_editor.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_activity_flashcard_study.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\activity_flashcard_study.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_fragment_profile.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/fragment_profile.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_upload_file.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_upload_file.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_activity_forgot_password.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/activity_forgot_password.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_item_card.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\item_card.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_more_vert.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_more_vert.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_bg_badge_success.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\bg_badge_success.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_item_deck.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/item_deck.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_bg_chat_user.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\bg_chat_user.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_bg_badge_neutral.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/bg_badge_neutral.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_bg_chat_ai.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\bg_chat_ai.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_activity_quiz_setup.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/activity_quiz_setup.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_activity_import.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\activity_import.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_bg_quiz_option_correct.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/bg_quiz_option_correct.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_bg_chip_selected.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\bg_chip_selected.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_auto_awesome.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_auto_awesome.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_delete.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_delete.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_activity_deck_detail.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/activity_deck_detail.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_fragment_aichat.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\fragment_aichat.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_download.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_download.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_activity_login.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\activity_login.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_item_chat_message.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/item_chat_message.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_cancel.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_cancel.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_activity_notification.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/activity_notification.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_fragment_storage.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\fragment_storage.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_bg_quiz_option_wrong.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/bg_quiz_option_wrong.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_item_import_preview.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\item_import_preview.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_cancel.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_cancel.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_bg_badge_info.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\bg_badge_info.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_bg_badge_success.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/bg_badge_success.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_send.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_send.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_arrow_back.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_arrow_back.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_activity_edit_profile.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\activity_edit_profile.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_bar_chart.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_bar_chart.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_dialog_deck_editor.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\dialog_deck_editor.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_logout.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_logout.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_bg_badge_warning.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\bg_badge_warning.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_dialog_study_plan_editor.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/dialog_study_plan_editor.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_activity_change_password.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\activity_change_password.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_bg_quiz_option_selected.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/bg_quiz_option_selected.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_bar_chart.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_bar_chart.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_quiz.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_quiz.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_item_deck.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\item_deck.xml"
+        "merged": "com.cardmaster.app-debug-49:/layout_item_ai_preview.xml.flat",
+        "source": "com.cardmaster.app-main-51:/layout/item_ai_preview.xml"
     },
     {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\drawable_ic_download.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\drawable\\ic_download.xml"
-    },
-    {
-        "merged": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-debug-36:\\layout_item_quiz_history.xml.flat",
-        "source": "C:\\Users\\huyho\\.gradle\\daemon\\8.9\\com.cardmaster.app-main-38:\\layout\\item_quiz_history.xml"
+        "merged": "com.cardmaster.app-debug-49:/drawable_ic_notifications.xml.flat",
+        "source": "com.cardmaster.app-main-51:/drawable/ic_notifications.xml"
     }
 ]
