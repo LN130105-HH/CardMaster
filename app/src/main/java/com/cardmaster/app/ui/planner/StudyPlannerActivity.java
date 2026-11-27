@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.cardmaster.app.data.local.entity.NotificationEntity;
 import com.cardmaster.app.data.calendar.GoogleCalendarSyncManager;
 import com.cardmaster.app.data.local.AppDatabase;
 import com.cardmaster.app.data.local.entity.StudyPlanEntity;
