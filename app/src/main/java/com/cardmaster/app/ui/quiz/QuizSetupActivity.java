@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.cardmaster.app.data.local.AppDatabase;
@@ -101,10 +102,29 @@ public class QuizSetupActivity extends AppCompatActivity {
         if (binding.rbTime5Min.isChecked()) timeLimitSeconds = 5 * 60;
         else if (binding.rbTime10Min.isChecked()) timeLimitSeconds = 10 * 60;
 
+        // hỏi người dùng có muốn trộn không trước khi bắt đầu làm bài
+        final int finalCount = count;
+        final int finalTimeLimit = timeLimitSeconds;
+        final boolean[] shuffle = {true, true};   // [0] = trộn câu hỏi, [1] = trộn đáp án A, B, C, D
+        new AlertDialog.Builder(this)
+                .setTitle("Tuỳ chọn trộn")
+                .setMultiChoiceItems(
+                        new String[]{"Trộn thứ tự câu hỏi", "Trộn thứ tự đáp án A, B, C, D"},
+                        shuffle,
+                        (dialog, which, isChecked) -> shuffle[which] = isChecked)
+                .setPositiveButton("Bắt đầu", (dialog, which) ->
+                        launchQuiz(finalCount, finalTimeLimit, shuffle[0], shuffle[1]))
+                .setNegativeButton("Huỷ", null)
+                .show();
+    }
+
+    private void launchQuiz(int count, int timeLimitSeconds, boolean shuffleQuestions, boolean shuffleOptions) {
         Intent intent = new Intent(this, QuizPlayActivity.class);
         intent.putExtra("DECK_ID", deckId);
         intent.putExtra("TARGET_COUNT", count);
         intent.putExtra("TIME_LIMIT_SEC", timeLimitSeconds);
+        intent.putExtra("SHUFFLE_QUESTIONS", shuffleQuestions);
+        intent.putExtra("SHUFFLE_OPTIONS", shuffleOptions);
         startActivity(intent);
         finish();
     }

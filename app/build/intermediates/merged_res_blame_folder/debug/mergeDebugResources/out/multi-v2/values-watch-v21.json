@@ -4,7 +4,7 @@
             "outputFile": "com.cardmaster.app-mergeDebugResources-47:/values-watch-v21/values-watch-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\huyho\\.gradle\\caches\\8.9\\transforms\\579d753937b639b745d9da945fcb2e84\\transformed\\appcompat-1.6.1\\res\\values-watch-v21\\values-watch-v21.xml",
+                    "source": "C:\\Users\\Admin\\.gradle\\caches\\8.13\\transforms\\1427528fd5182d28aae1e1b13564dea3\\transformed\\appcompat-1.6.1\\res\\values-watch-v21\\values-watch-v21.xml",
                     "from": {
                         "startLines": "2,6,10",
                         "startColumns": "4,4,4",
